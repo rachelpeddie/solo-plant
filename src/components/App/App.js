@@ -13,7 +13,8 @@ import Footer from '../Footer/Footer';
 
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute'
 
-import AddPlant from '../AddPlant/AddPlant'
+import AddPlant from '../AddPlant/AddPlant';
+import PlantInventory from '../PlantInventory/PlantInventory'
 import AboutPage from '../AboutPage/AboutPage';
 import UserPage from '../UserPage/UserPage';
 import InfoPage from '../InfoPage/InfoPage';
