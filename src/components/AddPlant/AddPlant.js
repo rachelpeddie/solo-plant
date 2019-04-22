@@ -63,6 +63,12 @@ class AddPlant extends Component {
             }
         })
     }
+
+    handleSubmit = event => {
+        event.preventDefault();
+        this.props.dispatch({ type: 'ADD_PLANT', payload: this.state.newPlant });
+    }
+    
     render(){
 
         const { classes } = this.props;
