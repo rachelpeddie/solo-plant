@@ -51,7 +51,7 @@ class AddPlant extends Component {
 
     componentDidMount = () => {
         this.props.dispatch({ type: 'GET_ROOMS' });
-        // this.props.dispatch({ type: 'GET_SUN' });
+        this.props.dispatch({ type: 'GET_SUN' });
     }
 
     handleChangeFor = propertyName => event => {
@@ -65,6 +65,7 @@ class AddPlant extends Component {
 
     handleSubmit = event => {
         event.preventDefault();
+        console.log(`new plant is:`, this.state.newPlant);
         this.props.dispatch({ type: 'ADD_PLANT', payload: this.state.newPlant });
     }
 
@@ -123,9 +124,9 @@ class AddPlant extends Component {
                     helperText="Please select your plant's sunlight requirements"
                     margin="normal"
                 >
-                    {/* {this.props.reduxState.sunReducer.map((sun, i) =>
-                        <MenuItem value={sun.id} key={i}>{sun.name}</MenuItem>
-                    )} */}
+                    {this.props.reduxState.sunReducer.map((sun, i) =>
+                        <MenuItem value={sun.id} key={i}>{sun.light}</MenuItem>
+                    )}
                 </TextField>
 
                 <TextField
@@ -147,7 +148,7 @@ class AddPlant extends Component {
                         <MenuItem value={room.id} key={i}>{room.name}</MenuItem>
                     )}
                 </TextField>
-
+                <pre>{JSON.stringify(this.state.newPlant)}</pre>
                 <Button variant="contained" color="default" className={classes.button} onClick={this.handleSubmit}>Add Plant </Button>
             
             </form>
