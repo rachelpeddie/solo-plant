@@ -42,10 +42,10 @@ class AddPlant extends Component {
             type: '',
             nickname: '',
             image: '',
-            days_to_water: '',
+            days: 0,
             sun_id: '',
             room_id: '',
-            date_added: moment().format()
+            date: moment().format()
         }
     }
 
@@ -107,6 +107,17 @@ class AddPlant extends Component {
                     margin="normal"
                     required
                     onChange={this.handleChangeFor('image')}
+                />
+
+                <TextField
+                    id="standard-with-placeholder"
+                    label="Water Frequency"
+                    type="number"
+                    placeholder="Days Between Water"
+                    className={classes.textField}
+                    margin="normal"
+                    required
+                    onChange={this.handleChangeFor('days')}
                 />
 
                 <TextField

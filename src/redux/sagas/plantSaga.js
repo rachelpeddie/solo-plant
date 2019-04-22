@@ -13,7 +13,7 @@ function* addPlantSaga (action) {
 
 function* plantSaga(){
     // yield takeEvery( 'GET_PLANTS', getPlantsSaga );
-    yield takeEvery( 'ADD_PLANTS', addPlantSaga );
+    yield takeEvery( 'ADD_PLANT', addPlantSaga );
 }
 
 export default plantSaga;
