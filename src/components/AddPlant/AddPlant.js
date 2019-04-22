@@ -68,7 +68,7 @@ class AddPlant extends Component {
         event.preventDefault();
         this.props.dispatch({ type: 'ADD_PLANT', payload: this.state.newPlant });
     }
-    
+
     render(){
 
         const { classes } = this.props;
@@ -144,9 +144,9 @@ class AddPlant extends Component {
                     helperText="Please select the room where your plant lives"
                     margin="normal"
                 >
-                    {/* {this.props.reduxState.roomReducer.map((room, i) =>
+                    {this.props.reduxState.roomReducer.map((room, i) =>
                         <MenuItem value={room.id} key={i}>{room.name}</MenuItem>
-                    )} */}
+                    )}
                 </TextField>
 
                 <Button variant="contained" color="default" className={classes.button} onClick={this.handleSubmit}>Add Plant </Button>
