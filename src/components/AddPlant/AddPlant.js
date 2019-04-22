@@ -8,7 +8,6 @@ import { withStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import MenuItem from '@material-ui/core/MenuItem';
 import Button from '@material-ui/core/Button';
-import { teal } from '@material-ui/core/colors';
 
 const moment = require('moment');
 
@@ -51,8 +50,8 @@ class AddPlant extends Component {
     }
 
     componentDidMount = () => {
-        this.props.dispatch({type: 'GET_ROOMS'});
-        this.props.dispatch({type: 'GET_SUN'});
+        this.props.dispatch({ type: 'GET_ROOMS' });
+        // this.props.dispatch({ type: 'GET_SUN' });
     }
 
     handleChangeFor = propertyName => event => {

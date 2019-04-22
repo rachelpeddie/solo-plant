@@ -1,9 +1,9 @@
 import axios from 'axios';
-import { put } from 'redux-saga/effects'
+import { takeEvery, put } from 'redux-saga/effects'
 
 function* getRoomsSaga(action) {
     try {
-        const getRoomsResponse = yield axios.get('/rooms')
+        const getRoomsResponse = yield axios.get('/api/plants/rooms')
         console.log(`got rooms from saga, woot!`, getRoomsResponse);
         yield put({ type: 'SET_ROOMS', payload: getRoomsResponse.data })
     }
@@ -12,4 +12,8 @@ function* getRoomsSaga(action) {
     }
 }
 
-export default getRoomsSaga;
+function* roomSaga () {
+    yield takeEvery('GET_ROOMS', getRoomsSaga);
+}
+
+export default roomSaga;
