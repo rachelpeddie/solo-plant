@@ -110,7 +110,7 @@ class AddPlant extends Component {
                 />
 
                 <TextField
-                    id="standard-with-placeholder"
+                    id="standard-number"
                     label="Water Frequency"
                     type="number"
                     placeholder="Days Between Water"
