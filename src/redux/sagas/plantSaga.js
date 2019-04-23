@@ -33,7 +33,20 @@ function* updatePlantSaga (action) {
     }
 }
 
+function* deletePlantSaga (action) {
+    try {
+        console.log(`in deletePlantSaga, payload is`, action.payload);
+        yield axios.delete(`api/plants/${action.payload}`, action.payload)
+        yield put({ type: 'GET_PLANTS' })
+    }
+    catch (error) {
+        console.log(`sorry, couldn't delete your plant`, error);
+        
+    }
+}
+
 function* plantSaga(){
+    yield takeEvery( 'DELETE_PLANT', deletePlantSaga );
     yield takeEvery( 'UPDATE_STATUS', updatePlantSaga );
     yield takeEvery( 'ADD_PLANT', addPlantSaga );
     yield takeEvery( 'GET_PLANTS', getPlantSaga );

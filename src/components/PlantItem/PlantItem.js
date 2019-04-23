@@ -46,11 +46,21 @@ class PlantItem extends Component {
 
     familyCalc = (added) => {
 
+        const now = moment().format();
+        const expiration = moment(added);
+
+        // get the difference between the moments
+        const diff = expiration.diff(now);
+        console.log(diff);
+
+        const diffDuration = moment.duration(diff);
+        let days = diffDuration.days() + 1;
+        return days;
     }
 
-    handleDelete = () => {
-        console.log(`this will eventually delete a plant`);
-        // this.props.dispatch({ type: 'DELETE_PLANT' })
+    handleDelete = (plant) => {
+        console.log(`this will delete a plant`, plant.plant_id);
+        this.props.dispatch({ type: 'DELETE_PLANT', payload: plant.plant_id})
     }
 
     render(){
@@ -66,7 +76,7 @@ class PlantItem extends Component {
                     }
                     <p>{this.familyCalc(this.props.plant.date_added)} days in the fam</p>
                     <p>{this.props.plant.sunlight}</p>
-                    <button onClick={() => this.handleDelete}>Delete</button>
+                    <button onClick={() => this.handleDelete(this.props.plant)}>Remove</button>
                 </div>
             </Grid>
         )
