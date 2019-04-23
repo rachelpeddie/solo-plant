@@ -46,6 +46,16 @@ class PlantItem extends Component {
 
     familyCalc = (added) => {
 
+        const now = moment().format();
+        const expiration = moment(added);
+
+        // get the difference between the moments
+        const diff = expiration.diff(now);
+        console.log(diff);
+
+        const diffDuration = moment.duration(diff);
+        let days = diffDuration.days() + 1;
+        return days;
     }
 
     handleDelete = () => {
