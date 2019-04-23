@@ -38,12 +38,6 @@ class PlantItem extends Component {
         return days;
     }
 
-
-    waterStatus = (plant) => {
-        console.log(`this will change water status for`, plant.nickname);
-        this.props.dispatch({ type: 'UPDATE_STATUS', payload: plant })
-    }
-
     familyCalc = (added) => {
 
         const now = moment().format();
@@ -72,7 +66,7 @@ class PlantItem extends Component {
                     <h3>{this.props.plant.plant_type}</h3>
                     {this.props.plant.status === true ?
                         <p>Water me in {this.waterCalc(this.props.plant)} days</p> :
-                        <button onClick={ () => this.waterStatus(this.props.plant)}>water me!</button>
+                        <p>Help me!  I need water!</p>
                     }
                     <p>{this.familyCalc(this.props.plant.date_added)} days in the fam</p>
                     <p>{this.props.plant.sunlight}</p>
