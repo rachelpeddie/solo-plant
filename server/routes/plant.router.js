@@ -2,6 +2,8 @@ const express = require('express');
 const pool = require('../modules/pool');
 const router = express.Router();
 
+const moment = require('moment');
+
 // getting all rooms from database
 router.get('/rooms', (req, res) => {
     let sqlText = `SELECT * FROM "rooms";`;
@@ -46,9 +48,8 @@ router.get('/sun', (req, res) => {
             console.log(`error getting all the plants from db`, error);
         })
     })
-/**
- * POST route template
- */
+
+// adding new plant to database
 router.post('/', (req, res) => {
     let plant = req.body;
     console.log(`plant is`, plant);
@@ -63,5 +64,23 @@ router.post('/', (req, res) => {
         res.sendStatus(500);
     })
 });
+
+// updating plant watered status to true/false
+router.put('/:id', (req, res) => {
+    let plant = req.body;
+    let date = moment().format();
+    let sqlText = `UPDATE "plants" SET "status" = $1, "last_watered" = $2 WHERE "plants"."id" = $3;`;
+    console.log(`req.params are`, req.params);
+    console.log(`req.body is`, req.body);
+    console.log(`date is`, date);
+    pool.query(sqlText, [!plant.status, plant.last_watered, req.params.id])
+    .then( response => {
+        console.log(`Woot!  Successfully updated plant status`);
+        res.sendStatus(201);
+    }).catch( error => {
+        console.log(`error updating plant status in database`, error);
+        res.sendStatus(500);
+    })
+})
 
 module.exports = router;

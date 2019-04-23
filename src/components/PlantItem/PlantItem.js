@@ -10,6 +10,7 @@ const moment = require('moment');
 
 class PlantItem extends Component {
 
+
     waterCalc = (plant) => {
         console.log(`water is`, plant);
         
@@ -20,24 +21,27 @@ class PlantItem extends Component {
         const diff = expiration.diff(now);
         console.log(diff);
 
-
         //express as a duration
         const diffDuration = moment.duration(diff);
-        if (diffDuration.days() >= plant.days_to_water) {
-            console.log(`water the plants`);
+        if (diffDuration.days() >= plant.days_to_water-1) {
+            console.log(`${plant.nickname} needs some water!`);
+            // this.waterStatus(plant);
         }
         else {
-            console.log(`relax!`);
+            console.log(`Relax! ${plant.nickname} is healthy.`);
 
         }
-        let days = (diffDuration.days() + plant.days_to_water)
+        let days = (diffDuration.days() + plant.days_to_water-1)
 
         // display
         console.log("Days:", days);
-        console.log("Hours:", diffDuration.hours());
-        console.log("Minutes:", diffDuration.minutes());
-        console.log("Seconds:", diffDuration.seconds());
         return days;
+    }
+
+
+    waterStatus = (plant) => {
+        console.log(`this will change water status for`, plant.nickname);
+        this.props.dispatch({ type: 'UPDATE_STATUS', payload: plant })
     }
 
     familyCalc = (added) => {
@@ -58,11 +62,11 @@ class PlantItem extends Component {
                     <h3>{this.props.plant.plant_type}</h3>
                     {this.props.plant.status === true ?
                         <p>Water me in {this.waterCalc(this.props.plant)} days</p> :
-                        <p>I need food <button>water me!</button></p>
+                        <button onClick={ () => this.waterStatus(this.props.plant)}>water me!</button>
                     }
                     <p>{this.familyCalc(this.props.plant.date_added)} days in the fam</p>
                     <p>{this.props.plant.sunlight}</p>
-                    <button onClick={this.handleDelete}>Delete</button>
+                    <button onClick={() => this.handleDelete}>Delete</button>
                 </div>
             </Grid>
         )
