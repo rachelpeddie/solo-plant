@@ -35,3 +35,4 @@ INSERT INTO "rooms" ("name")
 VALUES ('Kitchen'), ('Dining Room'), ('Living Room'), ('Family Room'), ('Bathroom'), ('Bedroom'), ('Porch');
 
 INSERT INTO "sunlight" ("light") VALUES ('Low Light'), ('Moderate Light'), ('Bright Light');
+

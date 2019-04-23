@@ -1,7 +1,12 @@
 import { all } from 'redux-saga/effects';
+
+// individual saga imports
 import loginSaga from './loginSaga';
 import registrationSaga from './registrationSaga';
 import userSaga from './userSaga';
+import roomSaga from './roomSaga';
+import sunSaga from './sunSaga';
+import plantSaga from './plantSaga';
 
 // rootSaga is the primary saga.
 // It bundles up all of the other sagas so our project can use them.
@@ -15,5 +20,8 @@ export default function* rootSaga() {
     loginSaga(),
     registrationSaga(),
     userSaga(),
+    roomSaga(),
+    sunSaga(),
+    plantSaga(),
   ]);
 }

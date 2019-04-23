@@ -13,6 +13,8 @@ import Footer from '../Footer/Footer';
 
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute'
 
+import AddPlant from '../AddPlant/AddPlant';
+import PlantInventory from '../PlantInventory/PlantInventory'
 import AboutPage from '../AboutPage/AboutPage';
 import UserPage from '../UserPage/UserPage';
 import InfoPage from '../InfoPage/InfoPage';
@@ -20,11 +22,13 @@ import InfoPage from '../InfoPage/InfoPage';
 import './App.css';
 
 class App extends Component {
+  
   componentDidMount () {
     this.props.dispatch({type: 'FETCH_USER'})
   }
 
   render() {
+
     return (
       <Router>
         <div>
@@ -36,8 +40,13 @@ class App extends Component {
             This is a route anyone can see, no login necessary */}
             <Route
               exact
-              path="/about"
-              component={AboutPage}
+              path="/addPlant"
+              component={AddPlant}
+            />
+            <Route
+              exact
+              path="/allPlants"
+              component={PlantInventory}
             />
             {/* For protected routes, the view could show one of several things on the same route.
             Visiting localhost:3000/home will show the UserPage if the user is logged in.
@@ -47,16 +56,16 @@ class App extends Component {
               exact
               path="/home"
               component={UserPage}
-            />
+            /> */}
             {/* This works the same as the other protected route, except that if the user is logged in,
             they will see the info page instead. */}
-            <ProtectedRoute
+            {/* <ProtectedRoute
               exact
               path="/info"
               component={InfoPage}
             />
             {/* If none of the other routes matched, we will show a 404. */}
-            <Route render={() => <h1>404</h1>} />
+            {/* <Route render={() => <h1>404</h1>} /> */}
           </Switch>
           <Footer />
         </div>
