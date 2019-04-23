@@ -4,16 +4,12 @@ import { connect } from 'react-redux';
 
 // material styles
 import Grid from '@material-ui/core/Grid';
-
-//require moment
-const moment = require('moment');
-
 class DashItem extends Component {
-
     checkStatus = (plant) => {
         console.log(`plants are`, plant);
         
         if(plant.status === false) {
+            this.props.dispatch({type: 'COUNT_PLANTS', payload: plant});
             return(
             <Grid item xs={4}>
                 <div className='dashDiv'>
@@ -32,7 +28,12 @@ class DashItem extends Component {
 
     waterPlant = (plant) => {
         console.log(`this will change water status for`, plant.nickname);
-        this.props.dispatch({ type: 'UPDATE_STATUS', payload: plant })
+        this.props.dispatch({ type: 'UPDATE_STATUS', payload: plant });
+    }
+
+    componentDidMount = () => {
+        this.props.dispatch({ type: 'COUNT_WATERED' });
+        this.props.dispatch({ type: 'COUNT_NEEDS_WATER' });
     }
 
     render() {

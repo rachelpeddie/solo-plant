@@ -7,6 +7,7 @@ import DashItem from '../DashItem/DashItem';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
+import needsWaterReducer from '../../redux/reducers/needsWaterReducer';
 
 const styles = theme => ({
     root: {
@@ -21,8 +22,13 @@ const styles = theme => ({
 
 class Dashboard extends Component {
 
+    percentageCalc = () => {
+
+    }
+
     componentDidMount = () => {
         this.props.dispatch({ type: 'GET_PLANTS' })
+        this.percentageCalc();
     }
 
     render(){
@@ -36,7 +42,7 @@ class Dashboard extends Component {
                     {this.props.reduxState.plantListReducer.map(plant =>
 
                         <DashItem plant={plant} key={plant.plant_id} />
-                        
+
                     )}
                    
                 </Grid>
