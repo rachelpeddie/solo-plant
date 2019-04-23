@@ -45,7 +45,8 @@ class AddPlant extends Component {
             days: 0,
             sun_id: '',
             room_id: '',
-            date: moment().format()
+            last_watered: moment().format(),
+            date_added: moment().format()
         }
     }
 
@@ -67,6 +68,18 @@ class AddPlant extends Component {
         event.preventDefault();
         console.log(`new plant is:`, this.state.newPlant);
         this.props.dispatch({ type: 'ADD_PLANT', payload: this.state.newPlant });
+        this.setState({
+            newPlant: {
+                type: '',
+                nickname: '',
+                image: '',
+                days: 0,
+                sun_id: '',
+                room_id: '',
+                last_watered: moment().format(),
+                date_added: moment().format()
+            }
+        })
     }
 
     render(){
@@ -159,7 +172,7 @@ class AddPlant extends Component {
                         <MenuItem value={room.id} key={i}>{room.name}</MenuItem>
                     )}
                 </TextField>
-                <pre>{JSON.stringify(this.state.newPlant)}</pre>
+                {/* <pre>{JSON.stringify(this.state.newPlant)}</pre> */}
                 <Button variant="contained" color="default" className={classes.button} onClick={this.handleSubmit}>Add Plant </Button>
             
             </form>

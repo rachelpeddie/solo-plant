@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import PlantItem from '../PlantItem/PlantItem';
 
 // material styles
 import PropTypes from 'prop-types';
@@ -23,11 +24,6 @@ class PlantInventory extends Component {
         this.props.dispatch({ type: 'GET_PLANTS' })
     }
 
-    handleDelete = () => {
-        console.log(`this will eventually delete a plant`);
-        // this.props.dispatch({ type: 'DELETE_PLANT' })
-    }
-
     render(){
         const { classes } = this.props;
         return(
@@ -36,17 +32,8 @@ class PlantInventory extends Component {
                     {/* maps through projects reducer and displays each project on dom*/}
                     {this.props.reduxState.plantListReducer.map(plant =>
 
-                        <Grid item xs={4} key={plant.id}>
-                            <div>
-                                <img src={plant.image} alt={plant.type}/>
-                                <h2>{plant.nickname}</h2>
-                                <h3>{plant.type}</h3>
-                                <p>{plant.name}</p>
-                                <p>{plant.status}</p>
-                                <p>{plant.light}</p>
-                                <button onClick={this.handleDelete}>Delete</button>
-                            </div>
-                        </Grid>
+                        <PlantItem plant={plant} key={plant.plant_id}/>
+
                     )}
                 </Grid>
             </div>

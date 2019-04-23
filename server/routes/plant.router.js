@@ -32,10 +32,12 @@ router.get('/sun', (req, res) => {
 
 // getting all plants and corresponding rooms/sun from database
     router.get('/', (req, res) => {
-        let sqlText = ` SELECT * FROM "plants"
+        let sqlText = ` SELECT "plants"."id" AS "plant_id", "plants"."user_id", "plants"."nickname", "plants"."plant_type", "plants"."image", "plants"."days_to_water",                                   "plants"."last_watered", "plants"."date_added", "plants"."status",
+                        "rooms"."name" AS "room", "sunlight"."light" AS "sunlight" FROM "plants"
                         JOIN "rooms" ON "plants"."room_id" = "rooms"."id"
-                        JOIN "sunlight" ON "plants"."sun_id" = "sunlight"."id";`;
-        pool.query(sqlText)
+                        JOIN "sunlight" ON "plants"."sun_id" = "sunlight"."id"
+                        WHERE "plants"."user_id"= $1;`;
+        pool.query(sqlText, [req.user.id])
         .then( result => {
             let plantArray = result.rows;
             console.log(`successfully got all the plants from db`, plantArray);
@@ -51,8 +53,8 @@ router.post('/', (req, res) => {
     let plant = req.body;
     console.log(`plant is`, plant);
     console.log(`user is`, req.user);
-    let sqlText = `INSERT INTO "plants" ("user_id", "nickname", "plant_type", "image", "days_to_water", "date_added", "room_id", "sun_id") VALUES ($1, $2, $3, $4, $5, $6, $7, $8);`
-    pool.query(sqlText, [req.user.id, plant.nickname, plant.type, plant.image, Number(plant.days), plant.date, plant.room_id, plant.sun_id])
+    let sqlText = `INSERT INTO "plants" ("user_id", "nickname", "plant_type", "image", "days_to_water", "last_watered", "date_added", "room_id", "sun_id") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9);`
+    pool.query(sqlText, [req.user.id, plant.nickname, plant.type, plant.image, Number(plant.days), plant.last_watered, plant.date_added, plant.room_id, plant.sun_id])
     .then( response => {
         console.log(`Woot! Added new plant to database!`, plant);
         res.sendStatus(201);
