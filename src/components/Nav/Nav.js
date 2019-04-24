@@ -1,4 +1,5 @@
 import React from 'react';
+import { FaSeedling, FaRobot, FaPlus, FaTint } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import LogOutButton from '../LogOutButton/LogOutButton';
@@ -7,7 +8,7 @@ import './Nav.css';
 const Nav = (props) => (
   <div className="nav">
     <Link to="/dashboard">
-      <h2 className="nav-title">Prime Solo Project</h2>
+      <h2 className="nav-title"><FaRobot /></h2>
     </Link>
     {props.user.id && (
       <>
@@ -16,16 +17,16 @@ const Nav = (props) => (
     )}
     <div className="nav-right">
       <Link className="nav-link" to="/info">
-        Add Plant
+        <FaPlus /> Add Plant
       </Link>
       <Link className="nav-link" to="/allPlants">
-        Plant Inventory
+        <FaSeedling /> Plant Inventory
       </Link>
       <Link className="nav-link" to="/dashboard">
         {/* Show this link if they are logged in or not,
         but call this link 'Home' if they are logged in,
         and call this link 'Login / Register' if they are not */}
-        {props.user.id ? 'Dashboard' : 'Login / Register'}
+        {props.user.id ? <div><FaTint />Dashboard</div> : 'Login / Register'}
       </Link>
     </div>
   </div>
