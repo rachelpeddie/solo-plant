@@ -16,7 +16,7 @@ class DashItem extends Component {
                     <h2>{plant.nickname}</h2>
                     <p>{plant.plant_type}</p>
                     <h4>{plant.room}</h4>
-                    <button className='dashButton'>I've been watered!</button>
+                    <button className='dashButton' onClick={() => this.waterPlant(this.props.plant)}>I've been watered!</button>
                 </div>
             </Grid>
             )}
