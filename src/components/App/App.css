@@ -1,7 +1,11 @@
  body {
     font-family: 'Catamaran', sans-serif;
     margin: 0px;
-    color: #262a36;
+    color: #425757;
+}
+
+.dash-header {
+    margin-left: 6%;
 }
 /*
 .alert {

@@ -60,12 +60,13 @@ class Dashboard extends Component {
                     styles={{
                         // Customize the root svg element
                         root: {
-                            height: `20vh`
+                            height: `20vh`,
+                            marginTop: '8vh'
                         },
                         // Customize the path, i.e. the "completed progress"
                         path: {
                             // Path color
-                            stroke: `rgba(62, 152, 199, ${this.percentageCalc() / 100})`,
+                            stroke: `rgb(137, 159, 179, ${this.percentageCalc() / 100})`,
                             // Whether to use rounded or flat corners on the ends - can use 'butt' or 'round'
                             strokeLinecap: 'butt',
                             // Customize transition animation
@@ -74,14 +75,15 @@ class Dashboard extends Component {
                         // Customize the circle behind the path, i.e. the "total progress"
                         trail: {
                             // Trail color
-                            stroke: '#d6d6d6',
+                            stroke: '#eeeeee',
                         },
                         // Customize the text
                         text: {
                             // Text color
-                            fill: '#f88',
+                            fill: '#9db1b1',
                             // Text size
                             fontSize: '24px',
+                            fontWeight: '900'
                         },
                         // Customize background - only used when the `background` prop is true
                         background: {
@@ -92,7 +94,7 @@ class Dashboard extends Component {
             
             <div className={classes.root}>
                 
-                <h1>Water me!</h1>
+                <h1 className="dash-header">Water me!</h1>
                 <Grid container spacing={24} className={classes.mainGrid} >
                     {/* maps through projects reducer and displays each project on dom*/}
                     
