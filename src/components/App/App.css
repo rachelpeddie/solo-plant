@@ -92,3 +92,13 @@ button {
 .logout-button:hover {
     color: #425757;
 }
+
+.footer {
+    text-align: center;
+    color: #9db1b1;
+    font-size: 8px;
+}
+
+.lemon {
+    padding-right: 3px;
+}

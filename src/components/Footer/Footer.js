@@ -1,5 +1,6 @@
 import React from 'react';
 import './Footer.css'
+import { FaRegLemon } from 'react-icons/fa';
 
 // This is one of our simplest components
 // It doesn't have local state, so it can be a function component.
@@ -8,7 +9,7 @@ import './Footer.css'
 
 const Footer = () => (
   <footer>
-    <p className="footer-class">A Peddie Production</p>
+    <p className="footer"><FaRegLemon className="lemon"/>powered by Peddie</p>
   </footer>
 );
 
