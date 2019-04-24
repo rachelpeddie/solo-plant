@@ -1,11 +1,12 @@
 const express = require('express');
 const pool = require('../modules/pool');
 const router = express.Router();
+const { rejectUnauthenticated } = require('../modules/authentication-middleware');
 
 const moment = require('moment');
 
 // getting all rooms from database
-router.get('/rooms', (req, res) => {
+router.get('/rooms', rejectUnauthenticated, (req, res) => {
     let sqlText = `SELECT * FROM "rooms";`;
     pool.query(sqlText)
     .then( result => {
@@ -19,7 +20,7 @@ router.get('/rooms', (req, res) => {
 });
 
 // getting all sunlight requirements from database
-router.get('/sun', (req, res) => {
+router.get('/sun', rejectUnauthenticated, (req, res) => {
     let sqlText = `SELECT * FROM "sunlight";`;
     pool.query(sqlText)
         .then(result => {
@@ -33,7 +34,7 @@ router.get('/sun', (req, res) => {
 });
 
 // getting all plants and corresponding rooms/sun from database
-    router.get('/', (req, res) => {
+router.get('/', rejectUnauthenticated, (req, res) => {
         let sqlText = ` SELECT "plants"."id" AS "plant_id", "plants"."user_id", "plants"."nickname", "plants"."plant_type", "plants"."image", "plants"."days_to_water",                                   "plants"."last_watered", "plants"."date_added", "plants"."status",
                         "rooms"."name" AS "room", "sunlight"."light" AS "sunlight" FROM "plants"
                         JOIN "rooms" ON "plants"."room_id" = "rooms"."id"
@@ -50,7 +51,7 @@ router.get('/sun', (req, res) => {
     })
 
 // adding new plant to database
-router.post('/', (req, res) => {
+router.post('/', rejectUnauthenticated, (req, res) => {
     let plant = req.body;
     console.log(`plant is`, plant);
     console.log(`user is`, req.user);
@@ -66,7 +67,7 @@ router.post('/', (req, res) => {
 });
 
 // updating plant watered status to true/false
-router.put('/:id', (req, res) => {
+router.put('/:id', rejectUnauthenticated, (req, res) => {
     let plant = req.body;
     let date = moment().format();
     let sqlText = `UPDATE "plants" SET "status" = $1, "last_watered" = $2 WHERE "plants"."id" = $3;`;
