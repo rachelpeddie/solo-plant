@@ -53,3 +53,19 @@ input {
     width: 20vw;
     overflow: hidden;
 }
+
+.smallImage {
+    height: 14vw;
+    width: 14vw;
+    overflow: hidden;
+}
+
+.dashDiv {
+    width: 20vw;
+    padding-left: 1vw;
+    padding-right: 1vw;
+}
+
+.dashButton {
+    width: 14vw;
+}

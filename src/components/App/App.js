@@ -11,10 +11,11 @@ import {connect} from 'react-redux';
 import Nav from '../Nav/Nav';
 import Footer from '../Footer/Footer';
 
-import ProtectedRoute from '../ProtectedRoute/ProtectedRoute'
+import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 
 import AddPlant from '../AddPlant/AddPlant';
-import PlantInventory from '../PlantInventory/PlantInventory'
+import PlantInventory from '../PlantInventory/PlantInventory';
+import Dashboard from '../Dashboard/Dashboard';
 import AboutPage from '../AboutPage/AboutPage';
 import UserPage from '../UserPage/UserPage';
 import InfoPage from '../InfoPage/InfoPage';
@@ -47,6 +48,12 @@ class App extends Component {
               exact
               path="/allPlants"
               component={PlantInventory}
+            />
+
+            <Route
+              exact
+              path="/dashboard"
+              component={Dashboard}
             />
             {/* For protected routes, the view could show one of several things on the same route.
             Visiting localhost:3000/home will show the UserPage if the user is logged in.

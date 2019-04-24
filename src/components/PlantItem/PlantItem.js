@@ -23,7 +23,7 @@ class PlantItem extends Component {
 
         //express as a duration
         const diffDuration = moment.duration(diff);
-        if (diffDuration.days() >= plant.days_to_water-1) {
+        if (diffDuration.days() >= plant.days_to_water) {
             console.log(`${plant.nickname} needs some water!`);
             // this.waterStatus(plant);
         }
@@ -35,13 +35,7 @@ class PlantItem extends Component {
 
         // display
         console.log("Days:", days);
-        return days;
-    }
-
-
-    waterStatus = (plant) => {
-        console.log(`this will change water status for`, plant.nickname);
-        this.props.dispatch({ type: 'UPDATE_STATUS', payload: plant })
+        return Math.abs(days);
     }
 
     familyCalc = (added) => {
@@ -54,8 +48,8 @@ class PlantItem extends Component {
         console.log(diff);
 
         const diffDuration = moment.duration(diff);
-        let days = diffDuration.days() + 1;
-        return days;
+        let days = diffDuration.days()-1;
+        return Math.abs(days);
     }
 
     handleDelete = (plant) => {
@@ -72,7 +66,7 @@ class PlantItem extends Component {
                     <h3>{this.props.plant.plant_type}</h3>
                     {this.props.plant.status === true ?
                         <p>Water me in {this.waterCalc(this.props.plant)} days</p> :
-                        <button onClick={ () => this.waterStatus(this.props.plant)}>water me!</button>
+                        <p>Help me!  I need water!</p>
                     }
                     <p>{this.familyCalc(this.props.plant.date_added)} days in the fam</p>
                     <p>{this.props.plant.sunlight}</p>

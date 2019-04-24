@@ -18,7 +18,7 @@ const rootReducer = combineReducers({
   user, // will have an id and username if someone is logged in
   roomReducer,
   sunReducer,
-  plantListReducer
+  plantListReducer,
 });
 
 export default rootReducer;
