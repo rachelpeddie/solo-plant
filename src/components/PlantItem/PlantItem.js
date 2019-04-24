@@ -31,7 +31,7 @@ class PlantItem extends Component {
             console.log(`Relax! ${plant.nickname} is healthy.`);
 
         }
-        let days = (diffDuration.days() + plant.days_to_water-1)
+        let days = (diffDuration.days() + plant.days_to_water+1)
 
         // display
         console.log("Days:", days);

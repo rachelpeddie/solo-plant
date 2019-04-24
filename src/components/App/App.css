@@ -1,8 +1,9 @@
-/* body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+ body {
+    font-family: 'Catamaran', sans-serif;
     margin: 0px;
+    color: #262a36;
 }
-
+/*
 .alert {
     background-color: #ff4545;
     margin: 50px;
@@ -37,7 +38,7 @@ input {
 }
 
 /* This line makes the "Register" and "Login" buttons look like links */
-/* .link-button {
+.link-button {
     background:none;
     color:inherit;
     border:none;
@@ -46,7 +47,7 @@ input {
     outline:0;
     border-bottom:1px solid #444; 
     cursor: pointer;
-} */
+}
 
 .galleryImage {
     height: 20vw;
@@ -68,4 +69,22 @@ input {
 
 .dashButton {
     width: 14vw;
+}
+
+button {
+    background-color: #425757;
+    border: none;
+    color: #fff;
+    width: 65%;
+    height: 30px;
+}
+
+.logout-button {
+    background-color: #9db1b1;
+    margin-left: 8px;
+    width: 8%;
+}
+
+.logout-button:hover {
+    color: #425757;
 }
