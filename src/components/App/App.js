@@ -16,9 +16,7 @@ import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 import AddPlant from '../AddPlant/AddPlant';
 import PlantInventory from '../PlantInventory/PlantInventory';
 import Dashboard from '../Dashboard/Dashboard';
-import AboutPage from '../AboutPage/AboutPage';
 import UserPage from '../UserPage/UserPage';
-import InfoPage from '../InfoPage/InfoPage';
 
 import './App.css';
 

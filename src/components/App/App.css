@@ -87,10 +87,15 @@ button {
     background-color: #9db1b1;
     margin-left: 8px;
     width: 8%;
+    margin-top: 30px;
 }
 
 .logout-button:hover {
     color: #425757;
+}
+
+.dropdown-button {
+    width: 20px;
 }
 
 .footer {

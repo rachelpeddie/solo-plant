@@ -1,20 +1,17 @@
 import React from 'react';
-import { FaSeedling, FaRobot, FaPlus, FaTint } from 'react-icons/fa';
+import { FaSeedling, FaPlus, FaTint } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import LogOutButton from '../LogOutButton/LogOutButton';
+
+import Dropdown from '../Dropdown/Dropdown';
 import './Nav.css';
 
 const Nav = (props) => (
   <div className="nav">
-    <Link to="/dashboard">
-      <h2 className="nav-title"><FaRobot /></h2>
-    </Link>
-    {props.user.id && (
-      <>
-        <LogOutButton className = 'logout-button'/>
-      </>
-    )}
+
+       <Dropdown />
+
+    
     <div className="nav-right">
       <Link className="nav-link" to="/info">
         <FaPlus /> Add Plant
