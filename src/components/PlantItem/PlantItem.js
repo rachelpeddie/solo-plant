@@ -23,7 +23,7 @@ class PlantItem extends Component {
 
         //express as a duration
         const diffDuration = moment.duration(diff);
-        if (diffDuration.days() >= plant.days_to_water-1) {
+        if (diffDuration.days() >= plant.days_to_water) {
             console.log(`${plant.nickname} needs some water!`);
             // this.waterStatus(plant);
         }
@@ -35,7 +35,7 @@ class PlantItem extends Component {
 
         // display
         console.log("Days:", days);
-        return days;
+        return Math.abs(days);
     }
 
     familyCalc = (added) => {
@@ -48,8 +48,8 @@ class PlantItem extends Component {
         console.log(diff);
 
         const diffDuration = moment.duration(diff);
-        let days = diffDuration.days() + 1;
-        return days;
+        let days = diffDuration.days()-1;
+        return Math.abs(days);
     }
 
     handleDelete = (plant) => {

@@ -9,7 +9,6 @@ class DashItem extends Component {
         console.log(`plants are`, plant);
         
         if(plant.status === false) {
-            this.props.dispatch({type: 'COUNT_PLANTS', payload: plant});
             return(
             <Grid item xs={4}>
                 <div className='dashDiv'>
@@ -31,16 +30,11 @@ class DashItem extends Component {
         this.props.dispatch({ type: 'UPDATE_STATUS', payload: plant });
     }
 
-    componentDidMount = () => {
-        this.props.dispatch({ type: 'COUNT_WATERED' });
-        this.props.dispatch({ type: 'COUNT_NEEDS_WATER' });
-    }
-
     render() {
         return (
-            <fragment>
+            <div>
                 {this.checkStatus(this.props.plant)}
-            </fragment>
+            </div>
         )
     }
 }

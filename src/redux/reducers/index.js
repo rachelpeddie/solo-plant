@@ -5,7 +5,6 @@ import user from './userReducer';
 import roomReducer from './roomReducer';
 import sunReducer from './sunReducer';
 import plantListReducer from './plantListReducer';
-import needsWaterReducer from './needsWaterReducer';
 
 // rootReducer is the primary reducer for our entire project
 // It bundles up all of the other reducers so our project can use them.
@@ -20,7 +19,6 @@ const rootReducer = combineReducers({
   roomReducer,
   sunReducer,
   plantListReducer,
-  needsWaterReducer
 });
 
 export default rootReducer;
