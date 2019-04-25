@@ -1,33 +1,35 @@
 import React from 'react';
+import { FaSeedling, FaPlus, FaTint } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import LogOutButton from '../LogOutButton/LogOutButton';
+
+import Dropdown from '../Dropdown/Dropdown';
 import './Nav.css';
 
 const Nav = (props) => (
   <div className="nav">
-    <Link to="/home">
-      <h2 className="nav-title">Prime Solo Project</h2>
-    </Link>
+
+       <Dropdown user={props.user.id}/>
+
+    
     <div className="nav-right">
+      <Link className="nav-link" to="/addPlant">
+        {props.user.id ? <div><FaPlus /> Add Plant </div> : null}
+      </Link>
+      <Link className="nav-link" to="/allPlants">
+        
+        {props.user.id ? <div><FaSeedling /> Plant Inventory</div> : null}
+      </Link>
+      <Link className="nav-link" to="/dashboard">
+
+        {props.user.id ? <div><div><FaTint />Dashboard</div> </div> : null}
+      </Link>
+      
       <Link className="nav-link" to="/home">
         {/* Show this link if they are logged in or not,
         but call this link 'Home' if they are logged in,
         and call this link 'Login / Register' if they are not */}
-        {props.user.id ? 'Home' : 'Login / Register'}
-      </Link>
-      {/* Show the link to the info page and the logout button if the user is logged in */}
-      {props.user.id && (
-        <>
-          <Link className="nav-link" to="/info">
-            Info Page
-          </Link>
-          <LogOutButton className="nav-link"/>
-        </>
-      )}
-      {/* Always show this link since the about page is not protected */}
-      <Link className="nav-link" to="/about">
-        About
+        {props.user.id ? null : 'Login / Register'}
       </Link>
     </div>
   </div>

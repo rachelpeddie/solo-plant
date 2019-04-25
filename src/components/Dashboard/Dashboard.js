@@ -53,46 +53,87 @@ class Dashboard extends Component {
     render(){
         const { classes } = this.props;
         return (
+            <div className = {classes.mainGrid}>
+                {this.props.reduxState.plantListReducer.length === 0 ? <div> <h1>You need to add some plants to your family!</h1> <button className = "add-plants-btn">Add Plants</button></div> :
             <div>
-                <CircularProgressbar
-                    percentage={this.percentageCalc()}
-                    text={`${this.percentageCalc()}%`}
+                { isNaN(this.percentageCalc()) ? <CircularProgressbar
+                    percentage={`0`}
+                    text={``}
                     styles={{
                         // Customize the root svg element
                         root: {
-                            height: `20vh`
+                            height: `20vh`,
+                            marginTop: '8vh'
                         },
                         // Customize the path, i.e. the "completed progress"
                         path: {
                             // Path color
-                            stroke: `rgba(62, 152, 199, ${this.percentageCalc() / 100})`,
+                            stroke: `rgb(137, 159, 179, 100)`,
                             // Whether to use rounded or flat corners on the ends - can use 'butt' or 'round'
                             strokeLinecap: 'butt',
                             // Customize transition animation
-                            transition: 'stroke-dashoffset 0.6s ease 0s',
+                            transition: 'stroke-dashoffset 2s ease 0s',
                         },
                         // Customize the circle behind the path, i.e. the "total progress"
                         trail: {
                             // Trail color
-                            stroke: '#d6d6d6',
+                            stroke: '#eeeeee',
                         },
                         // Customize the text
                         text: {
                             // Text color
-                            fill: '#f88',
+                            fill: '#9db1b1',
                             // Text size
                             fontSize: '24px',
+                            fontWeight: '900'
                         },
                         // Customize background - only used when the `background` prop is true
                         background: {
                             fill: '#3e98c7',
                         },
                     }}
-                />
+                /> : <CircularProgressbar
+                        percentage={this.percentageCalc()}
+                        text={`${this.percentageCalc()}%`}
+                        initialAnimation={true}
+                        styles={{
+                            // Customize the root svg element
+                            root: {
+                                height: `20vh`,
+                                marginTop: '8vh'
+                            },
+                            // Customize the path, i.e. the "completed progress"
+                            path: {
+                                // Path color
+                                stroke: `rgb(137, 159, 179, ${this.percentageCalc() / 100})`,
+                                // Whether to use rounded or flat corners on the ends - can use 'butt' or 'round'
+                                strokeLinecap: 'butt',
+                                // Customize transition animation
+                                transition: 'stroke-dashoffset 2s ease 0s',
+                            },
+                            // Customize the circle behind the path, i.e. the "total progress"
+                            trail: {
+                                // Trail color
+                                stroke: '#eeeeee',
+                            },
+                            // Customize the text
+                            text: {
+                                // Text color
+                                fill: '#9db1b1',
+                                // Text size
+                                fontSize: '24px',
+                                fontWeight: '900',
+                            },
+                            // Customize background - only used when the `background` prop is true
+                            background: {
+                                fill: '#3e98c7',
+                            },
+                        }}
+                         />}
             
             <div className={classes.root}>
                 
-                <h1>Water me!</h1>
+                <h1 className="dash-header">Water me!</h1>
                 <Grid container spacing={24} className={classes.mainGrid} >
                     {/* maps through projects reducer and displays each project on dom*/}
                     
@@ -105,7 +146,8 @@ class Dashboard extends Component {
                 </Grid>
             </div>
             </div>
-        )
+            }</div>
+            )
     }
 }
 
