@@ -16,7 +16,8 @@ import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 import AddPlant from '../AddPlant/AddPlant';
 import PlantInventory from '../PlantInventory/PlantInventory';
 import Dashboard from '../Dashboard/Dashboard';
-import UserPage from '../UserPage/UserPage';
+import AccountInfo from '../AccountInfo/AccountInfo';
+import About from '../About/About';
 
 import './App.css';
 
@@ -48,9 +49,9 @@ class App extends Component {
               component={PlantInventory}
             />
 
-            <Route
+            <ProtectedRoute
               exact
-              path="/dashboard"
+              path="/home"
               component={Dashboard}
             />
             {/* For protected routes, the view could show one of several things on the same route.
@@ -59,15 +60,13 @@ class App extends Component {
             Even though it seems like they are different pages, the user is always on localhost:3000/home */}
             <ProtectedRoute
               exact
-              path="/home"
-              component={UserPage}
+              path="/accountInfo"
+              component={AccountInfo}
             /> */}
-            {/* This works the same as the other protected route, except that if the user is logged in,
-            they will see the info page instead. */}
-            {/* <ProtectedRoute
+           <Route
               exact
-              path="/info"
-              component={InfoPage}
+              path="/about"
+              component={About}
             />
             {/* If none of the other routes matched, we will show a 404. */}
             <Route render={() => <h1>404</h1>} />
@@ -76,6 +75,6 @@ class App extends Component {
         </div>
       </Router>
   )}
-}
+  }
 
 export default connect()(App);

@@ -20,7 +20,7 @@ const Nav = (props) => (
         
         {props.user.id ? <div><FaSeedling /> Plant Inventory</div> : null}
       </Link>
-      <Link className="nav-link" to="/dashboard">
+      <Link className="nav-link" to="/home">
 
         {props.user.id ? <div><div><FaTint />Dashboard</div> </div> : null}
       </Link>
@@ -30,6 +30,12 @@ const Nav = (props) => (
         but call this link 'Home' if they are logged in,
         and call this link 'Login / Register' if they are not */}
         {props.user.id ? null : 'Login / Register'}
+      </Link>
+      <Link className="nav-link" to="/about">
+        {/* Show this link if they are logged in or not,
+        but call this link 'Home' if they are logged in,
+        and call this link 'Login / Register' if they are not */}
+        {props.user.id ? null : 'About'}
       </Link>
     </div>
   </div>
