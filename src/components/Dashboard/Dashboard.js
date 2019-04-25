@@ -53,7 +53,7 @@ class Dashboard extends Component {
     render(){
         const { classes } = this.props;
         return (
-            <div>
+            <div className = {classes.mainGrid}>
                 {this.props.reduxState.plantListReducer.length === 0 ? <div> <h1>You need to add some plants to your family!</h1> <button className = "add-plants-btn">Add Plants</button></div> :
             <div>
                 { isNaN(this.percentageCalc()) ? <CircularProgressbar
