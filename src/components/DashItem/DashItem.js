@@ -13,9 +13,9 @@ class DashItem extends Component {
             <Grid item xs={4}>
                 <div className='dashDiv'>
                     <img src={plant.image} alt={plant.plant_type} className='smallImage' />
-                    <h2>{plant.nickname}</h2>
-                    <p>{plant.plant_type}</p>
-                    <h4>{plant.room}</h4>
+                    <h2 className='plant-header'>{plant.nickname}</h2>
+                        <p className='room'>{plant.plant_type} | {plant.room}</p>
+                    {/* <h4 className = 'room'>{plant.room}</h4> */}
                     <button className='dashButton' onClick={() => this.waterPlant(this.props.plant)}>I've been watered!</button>
                 </div>
             </Grid>

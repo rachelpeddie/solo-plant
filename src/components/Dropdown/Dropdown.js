@@ -1,4 +1,6 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { withRouter } from "react-router";
 import LogOutButton from '../LogOutButton/LogOutButton';
 
 import PropTypes from 'prop-types';
@@ -14,11 +16,12 @@ import { FaSeedling } from 'react-icons/fa';
 
 const styles = theme => ({
     root: {
-        display: 'flex',
+        display: 'inline'
     },
     paper: {
         marginRight: theme.spacing.unit * 2,
     },
+
 });
 
 class Dropdown extends React.Component {
@@ -30,7 +33,14 @@ class Dropdown extends React.Component {
         this.setState(state => ({ open: !state.open }));
     };
 
-    handleClose = event => {
+    handleClose = event =>  {
+        console.log(`event.target is`, event.target.getAttribute('name'));
+        if (event.target.getAttribute('name') === 'account') {
+            this.props.history.push('/accountInfo')
+        }
+        else if (event.target.getAttribute('name') === 'about') {
+            this.props.history.push('/about')
+        }
         if (this.anchorEl.contains(event.target)) {
             return;
         }
@@ -44,6 +54,7 @@ class Dropdown extends React.Component {
 
         return (
             <div className={classes.root}>
+
                     <Button
                         buttonRef={node => {
                             this.anchorEl = node;
@@ -51,9 +62,11 @@ class Dropdown extends React.Component {
                         aria-owns={open ? 'menu-list-grow' : undefined}
                         aria-haspopup="true"
                     onClick={this.props.user && this.handleToggle}
-                    className="dropdown-button">
-                    <div><FaSeedling />PlantIt</div>
+                    id="dropdown-menu"
+                    >
+                    <div><FaSeedling /> PlantIt</div>
           </Button>
+
                     <Popper open={open} anchorEl={this.anchorEl} transition disablePortal>
                         {({ TransitionProps, placement }) => (
                             <Grow
@@ -64,13 +77,12 @@ class Dropdown extends React.Component {
                                 <Paper>
                                     <ClickAwayListener onClickAway={this.handleClose}>
                                         <MenuList>
-                                            <MenuItem onClick={this.handleClose}>Account Info</MenuItem>
-                                            <MenuItem onClick={this.handleClose}>About PlantIt</MenuItem>
-                                        <MenuItem onClick={this.handleClose}>{this.props.user && (
-                                            <>
-                                                <LogOutButton className='logout-button' />
-                                            </>
-                                        )}</MenuItem>
+                                            <MenuItem name="about" onClick={this.handleClose}>About PlantIt</MenuItem>
+                                        <MenuItem name="account" onClick={this.handleClose}>Account Info</MenuItem>
+                                        <MenuItem onClick={() => this.props.dispatch({ type: 'LOGOUT' })}>
+                                                Log Out
+
+                                        </MenuItem>
                                         </MenuList>
                                     </ClickAwayListener>
                                 </Paper>
@@ -86,4 +98,4 @@ Dropdown.propTypes = {
     classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(Dropdown);
+export default withRouter(connect()(withStyles(styles)(Dropdown)));

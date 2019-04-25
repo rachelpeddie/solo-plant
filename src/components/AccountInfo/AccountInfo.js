@@ -6,12 +6,14 @@ import LogOutButton from '../LogOutButton/LogOutButton';
 // const UserPage = ({ user }) => (
 // and then instead of `props.user.username` you could use `user.username`
 const AccountInfo = (props) => (
-  <div>
-    <h1 id="welcome">
-      Welcome, { props.user.username }!
+  <div id='account-div'>
+    <h1>
+      Account info for: { props.user.username }
     </h1>
-    <p>Your ID is: {props.user.id}</p>
-    <LogOutButton className="log-in" />
+    <p>Your phone number is: {props.user.phone}</p>
+    <center>
+    <LogOutButton className="link-button" />
+    </center>
   </div>
 );
 

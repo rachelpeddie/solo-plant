@@ -6,6 +6,7 @@
 
 .dash-header {
     margin-left: 6%;
+    text-align: left;
 }
 /*
 .alert {
@@ -44,6 +45,7 @@ input {
 /* This line makes the "Register" and "Login" buttons look like links */
 .link-button {
     background:none;
+    width: 70px;
     color:inherit;
     border:none;
     padding:0;
@@ -72,6 +74,9 @@ input {
 }
 
 .dashButton {
+    margin-top: 8px;
+    background-color: #9db1b1;
+    color: #fff;
     width: 14vw;
 }
 
@@ -99,8 +104,49 @@ button {
     color: inherit;
 }
 
-.dropdown-button {
-    width: 20px;
+#dropdown-menu {
+    width: 120px;
+    margin-top: 14px;
+    color: #f2f2f2;
+    background-color: #9db1b1;
+    text-transform: capitalize !important;
+    font-size: 18px;
+    font-weight: 600;
+    letter-spacing: .25px;
+}
+
+#dropdown-menu:hover {
+    color: #425757;
+}
+
+.plant-header {
+    margin-top: 6px;
+    margin-bottom: 0px;
+    font-size: 24px;
+}
+
+.plant-subheader {
+    margin: 0px;
+    font-style: italic;
+    font-size: 16px;
+}
+
+.room {
+    margin: 0px;
+    font-size: 16px;
+}
+
+.plant-info {
+    color: #9db1b1;
+    margin: 0px;
+}
+
+.light-spacing {
+    margin-left: 4px;
+}
+
+.remove-button {
+    margin-top: 8px;
 }
 
 .footer {
@@ -111,4 +157,21 @@ button {
 
 .lemon {
     padding-right: 3px;
+}
+
+#plantCount {
+    text-align: right;
+    padding-right: 6%;
+}
+#plantHeader {
+    text-align: center;
+    font-size: 30px;
+    margin: 4%;
+}
+
+#about-div {
+    padding: 4%;
+}
+#account-div {
+    padding: 4%;
 }

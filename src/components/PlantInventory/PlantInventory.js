@@ -28,6 +28,8 @@ class PlantInventory extends Component {
         const { classes } = this.props;
         return(
             <div className={classes.root}>
+            <h4 id='plantHeader'>PLANTS</h4>
+            <p id='plantCount'>plants in the fam: {this.props.reduxState.plantListReducer.length}</p>
                 <Grid container spacing={24} className={classes.mainGrid} >
                     {/* maps through projects reducer and displays each project on dom*/}
                     {this.props.reduxState.plantListReducer.map(plant =>

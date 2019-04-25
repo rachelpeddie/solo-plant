@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-
+import { FaSun } from 'react-icons/fa';
 
 // material styles
 import Grid from '@material-ui/core/Grid';
@@ -62,15 +62,15 @@ class PlantItem extends Component {
             <Grid item xs={4}>
                 <div>
                     <img src={this.props.plant.image} alt={this.props.plant.type} className='galleryImage' />
-                    <h2>{this.props.plant.nickname}</h2>
-                    <h3>{this.props.plant.plant_type}</h3>
+                    <h2 className='plant-header'>{this.props.plant.nickname}</h2>
+                    <h3 className='plant-subheader'>{this.props.plant.plant_type}</h3>
                     {this.props.plant.status === true ?
-                        <p>Water me in {this.waterCalc(this.props.plant)} days</p> :
-                        <p>Help me!  I need water!</p>
+                        <p className='plant-info'>Water me in {this.waterCalc(this.props.plant)} days</p> :
+                        <p className='plant-info'>Help me!  I need water!</p>
                     }
-                    <p>{this.familyCalc(this.props.plant.date_added)} days in the fam</p>
-                    <p>{this.props.plant.sunlight}</p>
-                    <button onClick={() => this.handleDelete(this.props.plant)}>Remove</button>
+                    <p className='plant-info'>{this.familyCalc(this.props.plant.date_added)} days in the fam</p>
+                    <p className='plant-info'><FaSun /><span className='light-spacing'>{this.props.plant.sunlight}</span></p>
+                    <button onClick={() => this.handleDelete(this.props.plant)} className='remove-button'>Remove</button>
                 </div>
             </Grid>
         )
