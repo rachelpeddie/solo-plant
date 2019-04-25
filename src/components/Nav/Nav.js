@@ -1,5 +1,5 @@
 import React from 'react';
-import { FaSeedling, FaPlus, FaTint } from 'react-icons/fa';
+import { FaPlus, FaTint, FaBars } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 
@@ -18,7 +18,7 @@ const Nav = (props) => (
       </Link>
       <Link className="nav-link" to="/allPlants">
         
-        {props.user.id ? <div><FaSeedling /> Plant Inventory</div> : null}
+        {props.user.id ? <div><FaBars /> Plant Inventory</div> : null}
       </Link>
       <Link className="nav-link" to="/home">
 

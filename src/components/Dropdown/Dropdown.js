@@ -10,7 +10,7 @@ import Popper from '@material-ui/core/Popper';
 import MenuItem from '@material-ui/core/MenuItem';
 import MenuList from '@material-ui/core/MenuList';
 import { withStyles } from '@material-ui/core/styles';
-import { FaRobot } from 'react-icons/fa';
+import { FaSeedling } from 'react-icons/fa';
 
 const styles = theme => ({
     root: {
@@ -50,9 +50,9 @@ class Dropdown extends React.Component {
                         }}
                         aria-owns={open ? 'menu-list-grow' : undefined}
                         aria-haspopup="true"
-                        onClick={this.handleToggle}
+                    onClick={this.props.user && this.handleToggle}
                     className="dropdown-button">
-                    <h2 className="nav-title"><FaRobot /></h2>
+                    <div><FaSeedling />PlantIt</div>
           </Button>
                     <Popper open={open} anchorEl={this.anchorEl} transition disablePortal>
                         {({ TransitionProps, placement }) => (
@@ -64,8 +64,8 @@ class Dropdown extends React.Component {
                                 <Paper>
                                     <ClickAwayListener onClickAway={this.handleClose}>
                                         <MenuList>
-                                            <MenuItem onClick={this.handleClose}>Profile</MenuItem>
-                                            <MenuItem onClick={this.handleClose}>My account</MenuItem>
+                                            <MenuItem onClick={this.handleClose}>Account Info</MenuItem>
+                                            <MenuItem onClick={this.handleClose}>About PlantIt</MenuItem>
                                         <MenuItem onClick={this.handleClose}>{this.props.user && (
                                             <>
                                                 <LogOutButton className='logout-button' />

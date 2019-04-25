@@ -38,3 +38,7 @@
 .nav-right {
   float: right;
 }
+
+.logo-float {
+  float: left
+}
