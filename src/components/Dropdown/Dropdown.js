@@ -66,7 +66,7 @@ class Dropdown extends React.Component {
                                         <MenuList>
                                             <MenuItem onClick={this.handleClose}>Profile</MenuItem>
                                             <MenuItem onClick={this.handleClose}>My account</MenuItem>
-                                        <MenuItem onClick={this.handleClose}>{props.user.id && (
+                                        <MenuItem onClick={this.handleClose}>{this.props.user && (
                                             <>
                                                 <LogOutButton className='logout-button' />
                                             </>

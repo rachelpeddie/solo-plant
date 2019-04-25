@@ -54,9 +54,9 @@ class Dashboard extends Component {
         const { classes } = this.props;
         return (
             <div>
-                <CircularProgressbar
-                    percentage={this.percentageCalc()}
-                    text={`${this.percentageCalc()}%`}
+                { isNaN(this.percentageCalc()) ? <CircularProgressbar
+                    percentage={`0`}
+                    text={``}
                     styles={{
                         // Customize the root svg element
                         root: {
@@ -66,11 +66,11 @@ class Dashboard extends Component {
                         // Customize the path, i.e. the "completed progress"
                         path: {
                             // Path color
-                            stroke: `rgb(137, 159, 179, ${this.percentageCalc() / 100})`,
+                            stroke: `rgb(137, 159, 179, 100)`,
                             // Whether to use rounded or flat corners on the ends - can use 'butt' or 'round'
                             strokeLinecap: 'butt',
                             // Customize transition animation
-                            transition: 'stroke-dashoffset 0.6s ease 0s',
+                            transition: 'stroke-dashoffset 2s ease 0s',
                         },
                         // Customize the circle behind the path, i.e. the "total progress"
                         trail: {
@@ -90,7 +90,44 @@ class Dashboard extends Component {
                             fill: '#3e98c7',
                         },
                     }}
-                />
+                /> : <CircularProgressbar
+                        percentage={this.percentageCalc()}
+                        text={`${this.percentageCalc()}%`}
+                        initialAnimation={true}
+                        styles={{
+                            // Customize the root svg element
+                            root: {
+                                height: `20vh`,
+                                marginTop: '8vh'
+                            },
+                            // Customize the path, i.e. the "completed progress"
+                            path: {
+                                // Path color
+                                stroke: `rgb(137, 159, 179, ${this.percentageCalc() / 100})`,
+                                // Whether to use rounded or flat corners on the ends - can use 'butt' or 'round'
+                                strokeLinecap: 'butt',
+                                // Customize transition animation
+                                transition: 'stroke-dashoffset 2s ease 0s',
+                            },
+                            // Customize the circle behind the path, i.e. the "total progress"
+                            trail: {
+                                // Trail color
+                                stroke: '#eeeeee',
+                            },
+                            // Customize the text
+                            text: {
+                                // Text color
+                                fill: '#9db1b1',
+                                // Text size
+                                fontSize: '24px',
+                                fontWeight: '900',
+                            },
+                            // Customize background - only used when the `background` prop is true
+                            background: {
+                                fill: '#3e98c7',
+                            },
+                        }}
+                         />}
             
             <div className={classes.root}>
                 

@@ -9,21 +9,27 @@ import './Nav.css';
 const Nav = (props) => (
   <div className="nav">
 
-       <Dropdown />
+       <Dropdown user={props.user.id}/>
 
     
     <div className="nav-right">
-      <Link className="nav-link" to="/info">
-        <FaPlus /> Add Plant
+      <Link className="nav-link" to="/addPlant">
+        {props.user.id ? <div><FaPlus /> Add Plant </div> : null}
       </Link>
       <Link className="nav-link" to="/allPlants">
-        <FaSeedling /> Plant Inventory
+        
+        {props.user.id ? <div><FaSeedling /> Plant Inventory</div> : null}
       </Link>
       <Link className="nav-link" to="/dashboard">
+
+        {props.user.id ? <div><div><FaTint />Dashboard</div> </div> : null}
+      </Link>
+      
+      <Link className="nav-link" to="/home">
         {/* Show this link if they are logged in or not,
         but call this link 'Home' if they are logged in,
         and call this link 'Login / Register' if they are not */}
-        {props.user.id ? <div><FaTint />Dashboard</div> : 'Login / Register'}
+        {props.user.id ? null : 'Login / Register'}
       </Link>
     </div>
   </div>
