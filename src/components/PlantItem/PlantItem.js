@@ -18,14 +18,14 @@ class PlantItem extends Component {
 
     // function to calculate how many days left until plant needs water
     waterCalc = (plant) => {
-        console.log(`water is`, plant);
+        // console.log(`water is`, plant);
         
         const now = moment().format();
         const expiration = moment(plant.last_watered);
 
         // get the difference between the moments
         const diff = expiration.diff(now);
-        console.log(diff);
+        // console.log(diff);
 
         //express as a duration
         const diffDuration = moment.duration(diff);
@@ -33,7 +33,7 @@ class PlantItem extends Component {
         let days = (diffDuration.days() + plant.days_to_water)
 
 
-        if (days <= 0) {
+        if (days === 0 && plant.status === true) {
             console.log(`${plant.nickname} needs some water!`);
             this.waterStatus(plant);
         }
@@ -41,7 +41,7 @@ class PlantItem extends Component {
             console.log(`Relax! ${plant.nickname} is healthy.`);
         }
         // display
-        console.log("Days:", days);
+        // console.log("Days:", days);
         return Math.abs(days);
     }
 
@@ -53,7 +53,7 @@ class PlantItem extends Component {
 
         // get the difference between the moments
         const diff = expiration.diff(now);
-        console.log(diff);
+        // console.log(diff);
 
         const diffDuration = moment.duration(diff);
         let days = diffDuration.days()-1;

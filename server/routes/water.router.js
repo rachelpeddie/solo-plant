@@ -6,11 +6,32 @@ const authToken = '19bad305d655d5a0cbc8478ed7ad925a';
 const client = require('twilio')(accountSid, authToken);
 const cron = require('node-cron');
 const pool = require('../modules/pool');
+const { rejectUnauthenticated } = require('../modules/authentication-middleware');
+
+const moment = require('moment');
 
 router.post('/', (req, res) => {
-    console.log(`req.body is`, req.body);
+    // console.log(`req.body is`, req.body);
     res.sendStatus(201);
 });
+
+// updating plant watered status based on water me button click
+router.put('/:id', rejectUnauthenticated, (req, res) => {
+    let plant = req.body;
+    let date = moment().format();
+    let sqlText = `UPDATE "plants" SET "status" = $1, "last_watered" = $2 WHERE "plants"."id" = $3;`;
+    // console.log(`req.params are`, req.params);
+    // console.log(`req.body is`, req.body);
+    // console.log(`date is`, date);
+    pool.query(sqlText, [!plant.status, plant.last_watered, req.params.id])
+        .then(response => {
+            console.log(`Woot!  Successfully updated plant status`);
+            res.sendStatus(201);
+        }).catch(error => {
+            console.log(`error updating plant status in database`, error);
+            res.sendStatus(500);
+        })
+})
 
 function checkWater (){
     console.log(`in checkWater`);

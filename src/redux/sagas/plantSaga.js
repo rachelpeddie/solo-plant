@@ -21,12 +21,24 @@ function* getPlantSaga (action) {
     }
 }
 
-function* updatePlantSaga (action) {
+function* waterPlantSaga (action) {
+    try {
+        console.log(`in waterPlantSaga, payload is`, action.payload);
+        
+        yield axios.put(`api/water/${action.payload.plant_id}`, action.payload)
+        yield put ({ type: 'GET_PLANTS' });
+    }
+    catch (error) {
+        console.log(`sorry, couldn't update your plant status`, error);
+    }
+}
+
+function* updatePlantSaga(action) {
     try {
         console.log(`in updatePlantSaga, payload is`, action.payload);
-        
+
         yield axios.put(`api/plants/${action.payload.plant_id}`, action.payload)
-        yield put ({ type: 'GET_PLANTS' });
+        yield put({ type: 'GET_PLANTS' });
     }
     catch (error) {
         console.log(`sorry, couldn't update your plant status`, error);
@@ -47,6 +59,7 @@ function* deletePlantSaga (action) {
 
 function* plantSaga(){
     yield takeEvery( 'DELETE_PLANT', deletePlantSaga );
+    yield takeEvery( 'WATER_PLANT', waterPlantSaga );
     yield takeEvery( 'UPDATE_STATUS', updatePlantSaga );
     yield takeEvery( 'ADD_PLANT', addPlantSaga );
     yield takeEvery( 'GET_PLANTS', getPlantSaga );

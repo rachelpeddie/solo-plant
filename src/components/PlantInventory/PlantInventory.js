@@ -24,21 +24,26 @@ class PlantInventory extends Component {
         this.props.dispatch({ type: 'GET_PLANTS' })
     }
 
-    render(){
+    render() {
         const { classes } = this.props;
-        return(
+        return (
             <div className={classes.root}>
-            <h4 id='plantHeader'>PLANTS</h4>
-            <p id='plantCount'>plants in the fam: {this.props.reduxState.plantListReducer.length}</p>
-                <Grid container spacing={24} className={classes.mainGrid} >
-                    {/* maps through projects reducer and displays each project on dom*/}
-                    {this.props.reduxState.plantListReducer.map(plant =>
+                <h4 id='plantHeader'>PLANTS</h4>
+                {this.props.reduxState.plantListReducer === '' ? null : this.props.reduxState.plantListReducer.length === 0 ? <div> <h1>You need to add some plants to your family!</h1> <button className="add-plants-btn">Add Plants</button></div> :
+                    <div>
+                        <p id='plantCount'>plants in the fam: {this.props.reduxState.plantListReducer.length}</p>
+                        <Grid container spacing={24} className={classes.mainGrid} >
+                            {/* maps through projects reducer and displays each project on dom*/}
+                            {this.props.reduxState.plantListReducer.map(plant =>
 
-                        <PlantItem plant={plant} key={plant.plant_id}/>
+                                <PlantItem plant={plant} key={plant.plant_id} />
 
-                    )}
-                </Grid>
+                            )}
+                        </Grid>
+                    </div>
+                }
             </div>
+
         )
     }
 }

@@ -1,4 +1,4 @@
-const plantList = (state = [], action) => {
+const plantList = (state = [''], action) => {
     switch (action.type) {
         case 'SET_PLANTS':
             return action.payload;

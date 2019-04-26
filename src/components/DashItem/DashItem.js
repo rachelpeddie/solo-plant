@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 import Grid from '@material-ui/core/Grid';
 class DashItem extends Component {
     checkStatus = (plant) => {
-        console.log(`plants are`, plant);
+        // console.log(`plants are`, plant);
         
         if(plant.status === false) {
             return(
@@ -27,7 +27,7 @@ class DashItem extends Component {
 
     waterPlant = (plant) => {
         console.log(`this will change water status for`, plant.nickname);
-        this.props.dispatch({ type: 'UPDATE_STATUS', payload: plant });
+        this.props.dispatch({ type: 'WATER_PLANT', payload: plant });
     }
 
     render() {

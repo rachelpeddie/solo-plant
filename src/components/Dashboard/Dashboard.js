@@ -33,7 +33,7 @@ class Dashboard extends Component {
     percentageCalc = () => {
         let needsWater = [];
         let plantList = this.props.reduxState.plantListReducer
-        console.log(`plantList variable`, plantList.length);
+        // console.log(`plantList variable`, plantList.length);
         
         
         plantList.map( plant => {
@@ -41,10 +41,10 @@ class Dashboard extends Component {
                 needsWater.push(plant)
             }
         })
-        console.log(`needs water`, needsWater.length);
+        // console.log(`needs water`, needsWater.length);
         let watered = plantList.length - needsWater.length
         let percent = (watered / plantList.length) * 100 ;
-        console.log(`watered is`, percent);
+        // console.log(`watered is`, percent);
         
         return Math.round(percent);
     }
@@ -54,7 +54,7 @@ class Dashboard extends Component {
         const { classes } = this.props;
         return (
             <div className = {classes.mainGrid}>
-                {this.props.reduxState.plantListReducer.length === 0 ? <div> <h1>You need to add some plants to your family!</h1> <button className = "add-plants-btn">Add Plants</button></div> :
+                {this.props.reduxState.plantListReducer === '' ? null : this.props.reduxState.plantListReducer.length === 0 ? <div> <h1>You need to add some plants to your family!</h1> <button className = "add-plants-btn">Add Plants</button></div> :
             <div>
                 { isNaN(this.percentageCalc()) ? <CircularProgressbar
                     percentage={`0`}

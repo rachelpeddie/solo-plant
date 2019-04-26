@@ -3,15 +3,13 @@ const pool = require('../modules/pool');
 const router = express.Router();
 const { rejectUnauthenticated } = require('../modules/authentication-middleware');
 
-const moment = require('moment');
-
 // getting all rooms from database
 router.get('/rooms', rejectUnauthenticated, (req, res) => {
     let sqlText = `SELECT * FROM "rooms";`;
     pool.query(sqlText)
     .then( result => {
         let rooms = result.rows;
-        console.log(`rooms are`, rooms);
+        // console.log(`rooms are`, rooms);
         res.send(rooms);
     }).catch( error => {
         console.log(`error getting rooms from database`, error);
@@ -25,7 +23,7 @@ router.get('/sun', rejectUnauthenticated, (req, res) => {
     pool.query(sqlText)
         .then(result => {
             let sunlight = result.rows;
-            console.log(`sunlight requirements are`, sunlight);
+            // console.log(`sunlight requirements are`, sunlight);
             res.send(sunlight);
         }).catch(error => {
             console.log(`error getting rooms from database`, error);
@@ -43,7 +41,7 @@ router.get('/', rejectUnauthenticated, (req, res) => {
         pool.query(sqlText, [req.user.id])
         .then( result => {
             let plantArray = result.rows;
-            console.log(`successfully got all the plants from db`, plantArray);
+            // console.log(`successfully got all the plants from db`, plantArray);
             res.send(plantArray);
         }).catch( error => {
             console.log(`error getting all the plants from db`, error);
@@ -66,22 +64,20 @@ router.post('/', rejectUnauthenticated, (req, res) => {
     })
 });
 
-// updating plant watered status to true/false
+// updating plants status on load based on dates
 router.put('/:id', rejectUnauthenticated, (req, res) => {
     let plant = req.body;
-    let date = moment().format();
-    let sqlText = `UPDATE "plants" SET "status" = $1, "last_watered" = $2 WHERE "plants"."id" = $3;`;
+    let sqlText = `UPDATE "plants" SET "status" = $1 WHERE "plants"."id" = $2;`;
     console.log(`req.params are`, req.params);
     console.log(`req.body is`, req.body);
-    console.log(`date is`, date);
-    pool.query(sqlText, [!plant.status, plant.last_watered, req.params.id])
-    .then( response => {
-        console.log(`Woot!  Successfully updated plant status`);
-        res.sendStatus(201);
-    }).catch( error => {
-        console.log(`error updating plant status in database`, error);
-        res.sendStatus(500);
-    })
+    pool.query(sqlText, [!plant.status, req.params.id])
+        .then(response => {
+            console.log(`Woot!  Successfully updated plant status`);
+            res.sendStatus(201);
+        }).catch(error => {
+            console.log(`error updating plant status in database`, error);
+            res.sendStatus(500);
+        })
 })
 
 // deleting plant from database
