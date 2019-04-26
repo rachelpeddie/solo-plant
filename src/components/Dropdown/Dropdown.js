@@ -1,7 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from "react-router";
-import LogOutButton from '../LogOutButton/LogOutButton';
 
 import PropTypes from 'prop-types';
 import Button from '@material-ui/core/Button';
@@ -29,17 +28,28 @@ class Dropdown extends React.Component {
         open: false,
     };
 
+    // logout = () => {
+    //     this.props.dispatch({ type: 'LOGOUT' });
+    //     this.props.history.push('/');
+    //     this.handleClose();
+    // }
+
     handleToggle = () => {
         this.setState(state => ({ open: !state.open }));
     };
 
     handleClose = event =>  {
         console.log(`event.target is`, event.target.getAttribute('name'));
+
         if (event.target.getAttribute('name') === 'account') {
             this.props.history.push('/accountInfo')
         }
         else if (event.target.getAttribute('name') === 'about') {
             this.props.history.push('/about')
+        }
+        else if( event.target.getAttribute('name') === 'logout'){
+            this.props.dispatch({ type: 'LOGOUT' });
+            this.props.history.push('/');
         }
         if (this.anchorEl.contains(event.target)) {
             return;
@@ -79,7 +89,7 @@ class Dropdown extends React.Component {
                                         <MenuList>
                                             <MenuItem name="about" onClick={this.handleClose}>About PlantIt</MenuItem>
                                         <MenuItem name="account" onClick={this.handleClose}>Account Info</MenuItem>
-                                        <MenuItem onClick={() => this.props.dispatch({ type: 'LOGOUT' })}>
+                                        <MenuItem name="logout"onClick={this.handleClose}>
                                                 Log Out
 
                                         </MenuItem>

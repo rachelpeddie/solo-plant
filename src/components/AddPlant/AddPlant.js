@@ -7,14 +7,13 @@ import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import MenuItem from '@material-ui/core/MenuItem';
-import Button from '@material-ui/core/Button';
 
 const moment = require('moment');
 
 const styles = theme => ({
     container: {
-        display: 'flex',
-        flexWrap: 'wrap',
+        // display: 'flex',
+        // flexWrap: 'wrap',
     },
     textField: {
         marginLeft: theme.spacing.unit,
@@ -32,6 +31,22 @@ const styles = theme => ({
     button: {
         margin: theme.spacing.unit,
         height: 40,
+    },
+    cssLabel: {
+        '&$cssFocused': {
+            color: '#9db1b1;',
+        },
+    },
+    cssFocused: {},
+    cssUnderline: {
+        '&:after': {
+            borderBottomColor: '#9db1b1;',
+        },
+    },
+    cssOutlinedInput: {
+        '&$cssFocused $notchedOutline': {
+            borderColor: '#9db1b1;',
+        },
     },
 });
 
@@ -57,7 +72,7 @@ class AddPlant extends Component {
 
     handleChangeFor = propertyName => event => {
         this.setState({
-            newPlant:{
+            newPlant: {
                 ...this.state.newPlant,
                 [propertyName]: event.target.value
             }
@@ -82,100 +97,189 @@ class AddPlant extends Component {
         })
     }
 
-    render(){
+    render() {
 
         const { classes } = this.props;
 
-        return(
-            <form className={classes.container} noValidate>
+        return (
+            <div>
+                <center>
+                    <form className={classes.container} noValidate>
+                        <div>
+                            <TextField
+                                id="standard-with-placeholder"
+                                label="Name of Plant"
+                                type="text"
+                                placeholder="Plant Type"
+                                className={classes.textField}
+                                InputLabelProps={{
+                                    classes: {
+                                        root: classes.cssLabel,
+                                        focused: classes.cssFocused,
+                                    },
+                                }}
+                                InputProps={{
+                                    classes: {
+                                        root: classes.cssOutlinedInput,
+                                        focused: classes.cssFocused,
+                                        underline: classes.cssUnderline,
+                                    },
+                                }}
+                                margin="normal"
+                                required
+                                onChange={this.handleChangeFor('type')}
+                            />
+                        </div>
+                        <div>
+                            <TextField
+                                id="standard-with-placeholder"
+                                label="Plant Nickname"
+                                type="text"
+                                placeholder="Nickname"
+                                className={classes.textField}
+                                InputLabelProps={{
+                                    classes: {
+                                        root: classes.cssLabel,
+                                        focused: classes.cssFocused,
+                                    },
+                                }}
+                                InputProps={{
+                                    classes: {
+                                        root: classes.cssOutlinedInput,
+                                        focused: classes.cssFocused,
+                                        underline: classes.cssUnderline,
+                                    },
+                                }}
+                                margin="normal"
+                                required
+                                onChange={this.handleChangeFor('nickname')}
+                            />
+                        </div>
+                        <div>
+                            <TextField
+                                id="standard-with-placeholder"
+                                label="Image"
+                                type="url"
+                                placeholder="Image URL"
+                                className={classes.textField}
+                                InputLabelProps={{
+                                    classes: {
+                                        root: classes.cssLabel,
+                                        focused: classes.cssFocused,
+                                    },
+                                }}
+                                InputProps={{
+                                    classes: {
+                                        root: classes.cssOutlinedInput,
+                                        focused: classes.cssFocused,
+                                        underline: classes.cssUnderline,
+                                    },
+                                }}
+                                margin="normal"
+                                required
+                                onChange={this.handleChangeFor('image')}
+                            />
+                        </div>
+                        <div>
+                            <TextField
+                                id="standard-number"
+                                label="Water Frequency"
+                                type="number"
+                                placeholder="Days Between Water"
+                                className={classes.textField}
+                                InputLabelProps={{
+                                    classes: {
+                                        root: classes.cssLabel,
+                                        focused: classes.cssFocused,
+                                    },
+                                }}
+                                InputProps={{
+                                    classes: {
+                                        root: classes.cssOutlinedInput,
+                                        focused: classes.cssFocused,
+                                        underline: classes.cssUnderline,
+                                    },
+                                }}
+                                margin="normal"
+                                required
+                                onChange={this.handleChangeFor('days')}
+                            />
+                        </div>
+                        <div>
+                            <TextField
+                                id="standard-select"
+                                select
+                                label="Select"
+                                className={classes.textField}
+                                value={this.state.newPlant.sun_id}
+                                onChange={this.handleChangeFor('sun_id')}
+                                SelectProps={{
+                                    MenuProps: {
+                                        className: classes.menu,
+                                    },
+                                }}
+                                InputLabelProps={{
+                                    classes: {
+                                        root: classes.cssLabel,
+                                        focused: classes.cssFocused,
+                                    },
+                                }}
+                                InputProps={{
+                                    classes: {
+                                        root: classes.cssOutlinedInput,
+                                        focused: classes.cssFocused,
+                                        underline: classes.cssUnderline,
+                                    },
+                                }}
+                                helperText="Please select your plant's sunlight requirements"
+                                margin="normal"
+                            >
+                                {this.props.reduxState.sunReducer.map((sun, i) =>
+                                    <MenuItem value={sun.id} key={i}>{sun.light}</MenuItem>
+                                )}
+                            </TextField>
+                        </div>
+                        <div>
 
-                <TextField
-                    id="standard-with-placeholder"
-                    label="Name of Plant"
-                    type="text"
-                    placeholder="Plant Type"
-                    className={classes.textField}
-                    margin="normal"
-                    required
-                    onChange={this.handleChangeFor('type')}
-                />
+                            <TextField
+                                id="standard-select"
+                                select
+                                label="Select"
+                                className={classes.textField}
+                                value={this.state.newPlant.room_id}
+                                onChange={this.handleChangeFor('room_id')}
+                                SelectProps={{
+                                    MenuProps: {
+                                        className: classes.menu,
+                                    },
+                                }}
+                            InputLabelProps={{
+                                classes: {
+                                    root: classes.cssLabel,
+                                    focused: classes.cssFocused,
+                                },
+                            }}
+                            InputProps={{
+                                classes: {
+                                    root: classes.cssOutlinedInput,
+                                    focused: classes.cssFocused,
+                                    underline: classes.cssUnderline,
+                                },
+                            }}
+                                helperText="Please select the room where your plant lives"
+                                margin="normal"
+                            >
+                                {this.props.reduxState.roomReducer.map((room, i) =>
+                                    <MenuItem value={room.id} key={i}>{room.name}</MenuItem>
+                                )}
+                            </TextField>
+                        </div>
+                        {/* <pre>{JSON.stringify(this.state.newPlant)}</pre> */}
+                        <div><button onClick={this.handleSubmit} id='add-plant-btn'>Add Plant </button></div>
 
-                <TextField
-                    id="standard-with-placeholder"
-                    label="Plant Nickname"
-                    type="text"
-                    placeholder="Nickname"
-                    className={classes.textField}
-                    margin="normal"
-                    required
-                    onChange={this.handleChangeFor('nickname')}
-                />
-
-                <TextField
-                    id="standard-with-placeholder"
-                    label="Image"
-                    type="url"
-                    placeholder="Image URL"
-                    className={classes.textField}
-                    margin="normal"
-                    required
-                    onChange={this.handleChangeFor('image')}
-                />
-
-                <TextField
-                    id="standard-number"
-                    label="Water Frequency"
-                    type="number"
-                    placeholder="Days Between Water"
-                    className={classes.textField}
-                    margin="normal"
-                    required
-                    onChange={this.handleChangeFor('days')}
-                />
-
-                <TextField
-                    id="standard-select"
-                    select
-                    label="Select"
-                    className={classes.textField}
-                    value={this.state.newPlant.sun_id}
-                    onChange={this.handleChangeFor('sun_id')}
-                    SelectProps={{
-                        MenuProps: {
-                            className: classes.menu,
-                        },
-                    }}
-                    helperText="Please select your plant's sunlight requirements"
-                    margin="normal"
-                >
-                    {this.props.reduxState.sunReducer.map((sun, i) =>
-                        <MenuItem value={sun.id} key={i}>{sun.light}</MenuItem>
-                    )}
-                </TextField>
-
-                <TextField
-                    id="standard-select"
-                    select
-                    label="Select"
-                    className={classes.textField}
-                    value={this.state.newPlant.room_id}
-                    onChange={this.handleChangeFor('room_id')}
-                    SelectProps={{
-                        MenuProps: {
-                            className: classes.menu,
-                        },
-                    }}
-                    helperText="Please select the room where your plant lives"
-                    margin="normal"
-                >
-                    {this.props.reduxState.roomReducer.map((room, i) =>
-                        <MenuItem value={room.id} key={i}>{room.name}</MenuItem>
-                    )}
-                </TextField>
-                {/* <pre>{JSON.stringify(this.state.newPlant)}</pre> */}
-                <Button variant="contained" color="default" className={classes.button} onClick={this.handleSubmit}>Add Plant </Button>
-            
-            </form>
+                    </form>
+                </center>
+            </div>
         )
     }
 }

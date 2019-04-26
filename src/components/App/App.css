@@ -4,6 +4,24 @@
     color: #425757;
 }
 
+.login-header {
+    text-align: center;
+}
+
+.login-btn {
+    margin: 8px;
+    margin-top: 20px;
+    width: 160px;
+    background-color: #9db1b1
+}
+
+#add-plant-btn {
+    margin: 8px;
+    margin-top: 16px;
+    width: 160px;
+    background-color: #9db1b1
+}
+
 .dash-header {
     margin-left: 6%;
     text-align: left;
@@ -45,6 +63,7 @@ input {
 /* This line makes the "Register" and "Login" buttons look like links */
 .link-button {
     background:none;
+    margin-top: 20px;
     width: 70px;
     color:inherit;
     border:none;
@@ -174,4 +193,8 @@ button {
 }
 #account-div {
     padding: 4%;
+}
+
+.float-left {
+    float: left;
 }
