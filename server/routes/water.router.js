@@ -17,7 +17,7 @@ function checkWater (){
     console.log(`in checkWater`);
     
     axios.get('/')
-    let sqlText = ` SELECT "user"."id", "user"."username", "user"."phone", string_agg("plants"."plant_type", ', ') AS "your_plants" FROM "user"
+    let sqlText = ` SELECT "user"."id", "user"."username", "user"."phone", string_agg("plants"."nickname", ', ') AS "your_plants" FROM "user"
                     JOIN "plants" ON "plants"."user_id" = "user"."id"
                     WHERE "plants"."status" = $1
                     GROUP BY "user"."id";`;
@@ -34,7 +34,7 @@ function checkWater (){
 
                         client.messages
                             .create({
-                                body: `You need to water ${user.your_plants}`,
+                                body: `Hey! ${user.username}, you need to water ${user.your_plants}`,
                                 from: '+12679037114',
                                 to: `${user.phone}`
                             })
