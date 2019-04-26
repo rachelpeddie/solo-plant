@@ -10,14 +10,8 @@ const moment = require('moment');
 
 class PlantItem extends Component {
 
-    // function to dispatch plant to change water status when days left to water = 0
-    waterStatus = (plant) => {
-        console.log(`this will change water status for`, plant.nickname);
-        this.props.dispatch({ type: 'UPDATE_STATUS', payload: plant });
-    }
-
     // function to calculate how many days left until plant needs water
-    waterCalc = (plant) => {
+    daysCalc = (plant) => {
         // console.log(`water is`, plant);
         
         const now = moment().format();
@@ -31,15 +25,6 @@ class PlantItem extends Component {
         const diffDuration = moment.duration(diff);
 
         let days = (diffDuration.days() + plant.days_to_water)
-
-
-        if (days === 0 && plant.status === true) {
-            console.log(`${plant.nickname} needs some water!`);
-            this.waterStatus(plant);
-        }
-        else {
-            console.log(`Relax! ${plant.nickname} is healthy.`);
-        }
         // display
         // console.log("Days:", days);
         return Math.abs(days);
@@ -75,7 +60,7 @@ class PlantItem extends Component {
                     <h3 className='plant-subheader'>{this.props.plant.plant_type}</h3>
                     {/* conditionally renders text based on plant watered status */}
                     {this.props.plant.status === true ?
-                        <p className='plant-info'>Water me in {this.waterCalc(this.props.plant)} days</p> :
+                        <p className='plant-info'>Water me in {this.daysCalc(this.props.plant)} days</p> :
                         <p className='plant-info'>Help me!  I need water!</p>
                     }
                     <p className='plant-info'>{this.familyCalc(this.props.plant.date_added)} days in the fam</p>

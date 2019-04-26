@@ -1,10 +1,49 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-
 // material styles
 import Grid from '@material-ui/core/Grid';
+
+const moment = require('moment');
 class DashItem extends Component {
+
+    // function to dispatch plant to change water status when days left to water = 0
+    waterStatus = (plant) => {
+        console.log(`this will change water status for`, plant.nickname);
+        this.props.dispatch({ type: 'UPDATE_STATUS', payload: plant });
+    }
+
+    needsWaterCalc = (plant) => {
+        // console.log(`water is`, plant);
+
+        const now = moment().format();
+        const expiration = moment(plant.last_watered);
+
+        // get the difference between the moments
+        const diff = expiration.diff(now);
+        // console.log(diff);
+
+        //express as a duration
+        const diffDuration = moment.duration(diff);
+
+        let days = (diffDuration.days() + plant.days_to_water)
+
+        console.log(`days are`, days);
+        
+        if (days <= 0 && plant.status === true) {
+            console.log(`${plant.nickname} needs some water!`);
+            this.waterStatus(plant);
+        }
+        else {
+            console.log(`Relax! ${plant.nickname} is healthy.`);
+        }
+        return Math.abs(days);
+    }
+    
+    componentDidMount = () => {
+        this.needsWaterCalc(this.props.plant);
+    }
+
     checkStatus = (plant) => {
         // console.log(`plants are`, plant);
         
