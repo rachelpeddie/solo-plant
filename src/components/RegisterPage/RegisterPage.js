@@ -103,16 +103,6 @@ class RegisterPage extends Component {
                 }}
                 required
               />
-
-              {/* <label htmlFor="username">
-              Username:
-              <input
-                type="text"
-                name="username"
-                value={this.state.username}
-                onChange={this.handleInputChangeFor('username')}
-              />
-            </label> */}
             </div>
             <div>
 
@@ -140,15 +130,6 @@ class RegisterPage extends Component {
                 }}
                 required
               />
-              {/* <label htmlFor="password">
-              Password:
-              <input
-                type="password"
-                name="password"
-                value={this.state.password}
-                onChange={this.handleInputChangeFor('password')}
-              />
-            </label> */}
             </div>
             <div>
               <TextField
@@ -176,15 +157,6 @@ class RegisterPage extends Component {
                 required
               />
             </div>
-            {/* <label htmlFor="Phone Number">
-              Phone Number:
-              <input
-                type="number"
-                name="phone number"
-                value={this.state.phone}
-                onChange={this.handleInputChangeFor('phone')}
-              />
-            </label> */}
             <div>
               <button
                 className="login-btn"
