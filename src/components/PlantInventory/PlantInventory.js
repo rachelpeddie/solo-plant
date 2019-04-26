@@ -49,12 +49,16 @@ class PlantInventory extends Component {
         sort_by: '',
     }
 
-    handleChangeFor =  value => event => {
-        event.preventDefault();
+    
+
+    handleChangeFor =  value => event  => {
+        console.log(`event target value`, event.target.value);
+        
         this.setState({
-            sort_by: value
+            sort_by: event.target.value
         })
-        this.props.dispatch({ type: 'SORT_BY', payload: this.state })
+        this.props.dispatch({ type: 'SORT_BY', payload: event.target.value })
+    
     }
 
     componentDidMount = () => {
@@ -69,13 +73,14 @@ class PlantInventory extends Component {
                 {this.props.reduxState.plantListReducer === '' ? null : this.props.reduxState.plantListReducer.length === 0 ? <div> <h1>You need to add some plants to your family!</h1> <button className="add-plants-btn">Add Plants</button></div> :
                     <div>
                         <div>
+
                             <TextField
                                 id="standard-select"
                                 select
-                                label="Sort By"
+                                label="Sort by"
                                 className={classes.textField}
                                 value={this.state.sort_by}
-                                onChange={this.handleChangeFor('sort_by')}
+                                onChange={this.handleChangeFor()}
                                 SelectProps={{
                                     MenuProps: {
                                         className: classes.menu,
@@ -98,7 +103,7 @@ class PlantInventory extends Component {
                                 margin="normal"
                             >
                                 {sortList.map((item, i) =>
-                                    <MenuItem value={i} key={i}>{item.name}</MenuItem>
+                                    <MenuItem value={item.name} key={i}>{item.name}</MenuItem>
                                 )}
                             </TextField>
                         </div>
