@@ -1,6 +1,6 @@
 import React from 'react';
 import './Footer.css'
-import { FaRegLemon } from 'react-icons/fa';
+import { FaRobot} from 'react-icons/fa';
 
 // This is one of our simplest components
 // It doesn't have local state, so it can be a function component.
@@ -9,7 +9,7 @@ import { FaRegLemon } from 'react-icons/fa';
 
 const Footer = () => (
   <footer>
-    <p className="footer"><FaRegLemon className="lemon"/>powered by Peddie</p>
+    <p className="footer"><FaRobot className="lemon"/>powered by Peddie</p>
   </footer>
 );
 
