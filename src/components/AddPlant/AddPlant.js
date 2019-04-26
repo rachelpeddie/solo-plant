@@ -7,7 +7,6 @@ import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import MenuItem from '@material-ui/core/MenuItem';
-import Button from '@material-ui/core/Button';
 
 const moment = require('moment');
 
@@ -20,9 +19,6 @@ const styles = theme => ({
         marginLeft: theme.spacing.unit,
         marginRight: theme.spacing.unit,
         width: 200,
-    },
-    multilineColor: {
-        color: "#425757"
     },
     description: {
         marginLeft: theme.spacing.unit,

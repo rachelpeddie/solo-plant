@@ -1,7 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from "react-router";
-import LogOutButton from '../LogOutButton/LogOutButton';
 
 import PropTypes from 'prop-types';
 import Button from '@material-ui/core/Button';

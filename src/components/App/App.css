@@ -4,12 +4,13 @@
     color: #425757;
 }
 
-#login-header {
+.login-header {
     text-align: center;
 }
 
-#login-btn {
+.login-btn {
     margin: 8px;
+    margin-top: 20px;
     width: 160px;
     background-color: #9db1b1
 }
