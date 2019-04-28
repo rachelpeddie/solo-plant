@@ -26,7 +26,7 @@ function* sortPlantSaga (action) {
         console.log(`sort plants is`, action.payload.id);
         
         const sortPlantsResponse = yield axios.get(`api/sort`, { params: { type: action.payload.type }})
-        // yield put({ type: 'SORT_PLANTS', payload: sortPlantsResponse.data })
+        yield put({ type: 'SORT_PLANTS', payload: sortPlantsResponse.data })
     }
     catch (error) {
         console.log(`sorry, couldn't sort your plants`, error)
