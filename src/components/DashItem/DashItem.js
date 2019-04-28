@@ -21,14 +21,15 @@ class DashItem extends Component {
 
         // get the difference between the moments
         const diff = expiration.diff(now);
-        // console.log(diff);
 
         //express as a duration
         const diffDuration = moment.duration(diff);
+        console.log(diffDuration.days());
+        
 
         let days = (diffDuration.days() + plant.days_to_water)
 
-        console.log(`days are`, days);
+        console.log(`${plant.nickname}'s days are`, days);
         
         if (days <= 0 && plant.status === true) {
             console.log(`${plant.nickname} needs some water!`);
