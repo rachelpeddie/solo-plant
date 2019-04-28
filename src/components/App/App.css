@@ -75,32 +75,38 @@ input {
 }
 
 .galleryImage {
-    height: 20vw;
-    width: 20vw;
+    height: 200px;
+    width: 200px;
     overflow: hidden;
 }
 
 .smallImage {
-    height: 14vw;
-    width: 14vw;
+    height: 250px;
+    width: 250px;
     overflow: hidden;
 }
 
 .dashDiv {
-    width: 20vw;
-    padding-left: 1vw;
-    padding-right: 1vw;
+    min-width: 400px;
+    width: 200px;
+    /* padding-left: 1vw;
+    padding-right: 1vw; */
+    padding-bottom: 20px;
 }
 
+
 .dashButton {
+    font-size: 14px;
     margin-top: 8px;
     background-color: #9db1b1;
     color: #fff;
-    width: 14vw;
+    width: 160px;
+    height: 40px;
 }
 
 button {
     background-color: #425757;
+    border-radius: 4px;
     border: none;
     color: #fff;
     width: 65%;
