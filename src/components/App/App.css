@@ -22,6 +22,15 @@
     background-color: #9db1b1
 }
 
+#just-added {
+    font-weight: 600;
+    font-style: normal;
+}
+
+#last-plant {
+    font-style: italic;
+}
+
 .dash-header {
     margin-left: 6%;
     text-align: left;
