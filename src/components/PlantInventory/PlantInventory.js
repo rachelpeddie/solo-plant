@@ -41,7 +41,7 @@ const styles = theme => ({
     },
 });
 
-const sortList = [{ name: 'Room' }, { name: 'Light Requirement' }, { name: 'Water Status' }, { name: 'Days to Water' }, { name: 'Days in Family' }];
+const sortList = [{ id: 1, name: 'Room', type: 'room_id' }, { id: 2, name: 'Light Requirement', type: 'sun_id' }, { id: 3, name: 'Water Status', type: 'status'  }, { id: 4, name: 'Days to Water', type: 'last_watered' }, { id: 5, name: 'Days in Family', type: 'date_added' }];
 
 class PlantInventory extends Component {
 
@@ -99,11 +99,10 @@ class PlantInventory extends Component {
                                         underline: classes.cssUnderline,
                                     },
                                 }}
-                                helperText="Please select your plant's sunlight requirements"
                                 margin="normal"
                             >
                                 {sortList.map((item, i) =>
-                                    <MenuItem value={item.name} key={i}>{item.name}</MenuItem>
+                                    <MenuItem value={item} key={i}>{item.name}</MenuItem>
                                 )}
                             </TextField>
                         </div>
