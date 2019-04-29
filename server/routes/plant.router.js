@@ -33,7 +33,7 @@ router.get('/sun', rejectUnauthenticated, (req, res) => {
 
 // getting all plants and corresponding rooms/sun from database
 router.get('/', rejectUnauthenticated, (req, res) => {
-        let sqlText = ` SELECT "plants"."id" AS "plant_id", "plants"."user_id", "plants"."nickname", "plants"."plant_type", "plants"."image", "plants"."days_to_water",                                   "plants"."last_watered", "plants"."date_added", "plants"."status",
+    let sqlText = ` SELECT "plants"."id" AS "plant_id", "plants"."user_id", "plants"."nickname", "plants"."plant_type", "plants"."image", "plants"."days_to_water",                                   "plants"."last_watered", "plants"."date_added", "plants"."status", "plants"."room_id", "plants"."sun_id",
                         "rooms"."name" AS "room", "sunlight"."light" AS "sunlight" FROM "plants"
                         JOIN "rooms" ON "plants"."room_id" = "rooms"."id"
                         JOIN "sunlight" ON "plants"."sun_id" = "sunlight"."id"

@@ -47,18 +47,24 @@ class PlantInventory extends Component {
 
     state = {
         sort_by: '',
+        plants: []
     }
 
-    
-
-    handleChangeFor =  value => event  => {
-        console.log(`event target value`, event.target.value);
+    sortBy = (sortby) => {
+        console.log(`sortby is`, sortby);
         
+        this.setState({ plants: this.props.reduxState.plantListReducer.sort((a, b) => a[sortby] - b[sortby]) });
+        console.log(`this.state.plants is`, this.state.plants);
+        
+    }
+    
+    handleChangeFor =  value => event  => {
+       
+        console.log(`event target value`, event.target.value);
+        this.sortBy(event.target.value.type);
         this.setState({
             sort_by: event.target.value
         })
-        this.props.dispatch({ type: 'SORT_BY', payload: event.target.value })
-    
     }
 
     componentDidMount = () => {
@@ -80,7 +86,7 @@ class PlantInventory extends Component {
                                 label="Sort by"
                                 className={classes.textField}
                                 value={this.state.sort_by}
-                                onChange={this.handleChangeFor()}
+                                onChange={this.handleChangeFor('sort_by')}
                                 SelectProps={{
                                     MenuProps: {
                                         className: classes.menu,
@@ -109,11 +115,12 @@ class PlantInventory extends Component {
                         <p id='plantCount'>plants in the fam: {this.props.reduxState.plantListReducer.length}</p>
                         <Grid container spacing={24} className={classes.mainGrid} >
                             {/* maps through projects reducer and displays each project on dom*/}
-                            {this.props.reduxState.plantListReducer.map(plant =>
+                            {this.state.sort_by === '' ? this.props.reduxState.plantListReducer.map(plant =>
 
                                 <PlantItem plant={plant} key={plant.plant_id} />
 
-                            )}
+                            ) : this.state.plants.map(plant => 
+                                <PlantItem plant={plant} key={plant.plant_id} />)}
                         </Grid>
                     </div>
                 }
