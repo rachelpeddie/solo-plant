@@ -41,7 +41,7 @@ const styles = theme => ({
     },
 });
 
-const sortList = [{ id: 1, name: 'Room', type: 'room_id' }, { id: 2, name: 'Light Requirement', type: 'sun_id' }, { id: 3, name: 'Water Status', type: 'status'  }, { id: 4, name: 'Days to Water', type: 'last_watered' }, { id: 5, name: 'Days in Family', type: 'date_added' }];
+const sortList = [{ id: 1, name: 'Room', type: 'room_id' }, { id: 2, name: 'Light Requirement', type: 'sun_id' }, { id: 3, name: 'Water Status', type: 'status'  }];
 
 class PlantInventory extends Component {
 
