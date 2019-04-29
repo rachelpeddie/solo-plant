@@ -86,12 +86,14 @@ input {
 .galleryImage {
     height: 200px;
     width: 200px;
+    object-fit: cover;
     overflow: hidden;
 }
 
 .smallImage {
     height: 250px;
     width: 250px;
+    object-fit: cover;
     overflow: hidden;
 }
 
