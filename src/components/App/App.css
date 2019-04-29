@@ -12,7 +12,7 @@
     margin: 8px;
     margin-top: 20px;
     width: 160px;
-    background-color: #9db1b1
+    background-color: #9db1b1;
 }
 
 #add-plant-btn {
@@ -81,6 +81,7 @@ input {
     outline:0;
     border-bottom:1px solid #444; 
     cursor: pointer;
+    border-radius: 0px;
 }
 
 .galleryImage {
