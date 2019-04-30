@@ -67,7 +67,6 @@ class AddPlant extends Component {
             last_watered: moment().format(),
             date_added: moment().format()
         },
-        query: '',
         result: [],
         plantAdded: ['']
     }
@@ -78,12 +77,12 @@ class AddPlant extends Component {
     }
 
     getInfo = () => {
-        axios.get(`/water`, { params: { search: this.state.query } })
+        console.log( 'adsf');
+        axios.get('/api/search', { params: { search: this.state.newPlant.type} })
             .then(({ data }) => {
                 console.log(`woot, got the plant stuff!`, data);
                 this.setState({
-                    result: data // MusicGraph returns an object named data, 
-                    // as does axios. So... data.data                             
+                    result: data                            
                 })
             })
     }
@@ -94,16 +93,14 @@ class AddPlant extends Component {
                 ...this.state.newPlant,
                 [propertyName]: event.target.value
             },
-            
-                query: this.search.value
-            }, () => {
-                if (this.state.query && this.state.query.length > 1) {
-                    if (this.state.query.length % 2 === 0) {
+        }, () => {
+            console.log( 'zdffd' );
+            if (this.state.newPlant.type && this.state.newPlant.type.length > 1) {
                         this.getInfo()
-                    }
-                }
-            
+            }
         })
+        console.log(`this.state.stuff`, this.state);
+        
     }
 
     handleSubmit = event => {
@@ -134,13 +131,13 @@ class AddPlant extends Component {
             <div>
                 {/* <pre>{JSON.stringify(this.state.plantAdded)}</pre>  */}
                 <center>
-
+                    
                     <form className={classes.container} noValidate>
                         <div>
                             <TextField
                                 id="standard-with-placeholder"
                                 label="Plant Search"
-                                ref={input => this.search = input}
+                                // ref={input => this.search = input}
                                 type="text"
                                 placeholder="Search for a plant..."
                                 className={classes.textField}
