@@ -54,7 +54,7 @@ class PlantItem extends Component {
     render(){
         return (
             <Grid item xs={4}>
-                <div>
+                <div className='dashDiv'>
                     <img src={this.props.plant.image} alt={this.props.plant.type} className='galleryImage' />
                     <h2 className='plant-header'>{this.props.plant.nickname}</h2>
                     <h3 className='plant-subheader'>{this.props.plant.plant_type} | {this.props.plant.room}</h3>

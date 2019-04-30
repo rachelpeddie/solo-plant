@@ -183,7 +183,11 @@ button {
 }
 
 .remove-button {
+    font-size: 14px;
     margin-top: 8px;
+    color: #fff;
+    width: 160px;
+    height: 40px;
 }
 
 .footer {
