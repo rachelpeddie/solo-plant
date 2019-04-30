@@ -33,12 +33,16 @@ const styles = theme => ({
         height: 40,
     },
     cssLabel: {
+        color: '#425757',
         '&$cssFocused': {
             color: '#9db1b1;',
         },
     },
     cssFocused: {},
     cssUnderline: {
+        '&:before': {
+            borderBottomColor: '#425757',
+        },
         '&:after': {
             borderBottomColor: '#9db1b1;',
         },

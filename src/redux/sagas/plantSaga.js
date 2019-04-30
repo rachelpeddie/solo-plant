@@ -21,6 +21,18 @@ function* getPlantSaga (action) {
     }
 }
 
+function* sortPlantSaga (action) {
+    try {
+        console.log(`sort plants is`, action.payload.id);
+        
+        const sortPlantsResponse = yield axios.get(`api/sort`, { params: { type: action.payload.type }})
+        yield put({ type: 'SORT_PLANTS', payload: sortPlantsResponse.data })
+    }
+    catch (error) {
+        console.log(`sorry, couldn't sort your plants`, error)
+    }
+}
+
 function* waterPlantSaga (action) {
     try {
         console.log(`in waterPlantSaga, payload is`, action.payload);
@@ -63,6 +75,7 @@ function* plantSaga(){
     yield takeEvery( 'UPDATE_STATUS', updatePlantSaga );
     yield takeEvery( 'ADD_PLANT', addPlantSaga );
     yield takeEvery( 'GET_PLANTS', getPlantSaga );
+    yield takeEvery( 'SORT_BY', sortPlantSaga)
 }
 
 export default plantSaga;

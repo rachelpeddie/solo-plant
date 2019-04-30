@@ -57,7 +57,7 @@ class PlantItem extends Component {
                 <div>
                     <img src={this.props.plant.image} alt={this.props.plant.type} className='galleryImage' />
                     <h2 className='plant-header'>{this.props.plant.nickname}</h2>
-                    <h3 className='plant-subheader'>{this.props.plant.plant_type}</h3>
+                    <h3 className='plant-subheader'>{this.props.plant.plant_type} | {this.props.plant.room}</h3>
                     {/* conditionally renders text based on plant watered status */}
                     {this.props.plant.status === true ?
                         <p className='plant-info'>Water me in {this.daysCalc(this.props.plant)} days</p> :
