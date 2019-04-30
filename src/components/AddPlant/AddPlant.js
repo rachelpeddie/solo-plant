@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-
+import axios from 'axios';
 
 // material ui styles
 import PropTypes from 'prop-types';
@@ -67,6 +67,8 @@ class AddPlant extends Component {
             last_watered: moment().format(),
             date_added: moment().format()
         },
+        query: '',
+        result: [],
         plantAdded: ['']
     }
 
@@ -75,12 +77,32 @@ class AddPlant extends Component {
         this.props.dispatch({ type: 'GET_SUN' });
     }
 
+    getInfo = () => {
+        axios.get(`/water`, { params: { search: this.state.query } })
+            .then(({ data }) => {
+                console.log(`woot, got the plant stuff!`, data);
+                this.setState({
+                    result: data // MusicGraph returns an object named data, 
+                    // as does axios. So... data.data                             
+                })
+            })
+    }
+
     handleChangeFor = propertyName => event => {
         this.setState({
             newPlant: {
                 ...this.state.newPlant,
                 [propertyName]: event.target.value
-            }
+            },
+            
+                query: this.search.value
+            }, () => {
+                if (this.state.query && this.state.query.length > 1) {
+                    if (this.state.query.length % 2 === 0) {
+                        this.getInfo()
+                    }
+                }
+            
         })
     }
 
@@ -100,12 +122,12 @@ class AddPlant extends Component {
                 last_watered: moment().format(),
                 date_added: moment().format()
             },
-            
+
         })
     }
 
     render() {
-        const lastPlant = this.state.plantAdded.length-1;
+        const lastPlant = this.state.plantAdded.length - 1;
         const { classes } = this.props;
 
         return (
@@ -117,9 +139,10 @@ class AddPlant extends Component {
                         <div>
                             <TextField
                                 id="standard-with-placeholder"
-                                label="Name of Plant"
+                                label="Plant Search"
+                                ref={input => this.search = input}
                                 type="text"
-                                placeholder="Plant Type"
+                                placeholder="Search for a plant..."
                                 className={classes.textField}
                                 InputLabelProps={{
                                     classes: {
@@ -139,6 +162,13 @@ class AddPlant extends Component {
                                 onChange={this.handleChangeFor('type')}
                             />
                         </div>
+                        <ul>
+                            {this.state.result.map((plant, i) =>
+                                <li key={i}>
+                                    {plant.common_name}
+                                </li>
+                            )}
+                        </ul>
                         <div>
                             <TextField
                                 id="standard-with-placeholder"
@@ -262,19 +292,19 @@ class AddPlant extends Component {
                                         className: classes.menu,
                                     },
                                 }}
-                            InputLabelProps={{
-                                classes: {
-                                    root: classes.cssLabel,
-                                    focused: classes.cssFocused,
-                                },
-                            }}
-                            InputProps={{
-                                classes: {
-                                    root: classes.cssOutlinedInput,
-                                    focused: classes.cssFocused,
-                                    underline: classes.cssUnderline,
-                                },
-                            }}
+                                InputLabelProps={{
+                                    classes: {
+                                        root: classes.cssLabel,
+                                        focused: classes.cssFocused,
+                                    },
+                                }}
+                                InputProps={{
+                                    classes: {
+                                        root: classes.cssOutlinedInput,
+                                        focused: classes.cssFocused,
+                                        underline: classes.cssUnderline,
+                                    },
+                                }}
                                 helperText="Please select the room where your plant lives"
                                 margin="normal"
                             >
