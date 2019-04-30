@@ -20,10 +20,8 @@ router.put('/:id', rejectUnauthenticated, (req, res) => {
     let plant = req.body;
     let date = moment().format();
     let sqlText = `UPDATE "plants" SET "status" = $1, "last_watered" = $2 WHERE "plants"."id" = $3;`;
-    // console.log(`req.params are`, req.params);
-    // console.log(`req.body is`, req.body);
-    // console.log(`date is`, date);
-    pool.query(sqlText, [!plant.status, plant.last_watered, req.params.id])
+
+    pool.query(sqlText, [!plant.status, date, req.params.id])
         .then(response => {
             console.log(`Woot!  Successfully updated plant status`);
             res.sendStatus(201);

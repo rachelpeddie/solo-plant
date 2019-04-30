@@ -66,7 +66,8 @@ class AddPlant extends Component {
             room_id: '',
             last_watered: moment().format(),
             date_added: moment().format()
-        }
+        },
+        plantAdded: ['']
     }
 
     componentDidMount = () => {
@@ -86,6 +87,7 @@ class AddPlant extends Component {
     handleSubmit = event => {
         event.preventDefault();
         console.log(`new plant is:`, this.state.newPlant);
+        this.state.plantAdded.push(this.state.newPlant);
         this.props.dispatch({ type: 'ADD_PLANT', payload: this.state.newPlant });
         this.setState({
             newPlant: {
@@ -97,17 +99,20 @@ class AddPlant extends Component {
                 room_id: '',
                 last_watered: moment().format(),
                 date_added: moment().format()
-            }
+            },
+            
         })
     }
 
     render() {
-
+        const lastPlant = this.state.plantAdded.length-1;
         const { classes } = this.props;
 
         return (
             <div>
+                {/* <pre>{JSON.stringify(this.state.plantAdded)}</pre>  */}
                 <center>
+
                     <form className={classes.container} noValidate>
                         <div>
                             <TextField
@@ -282,6 +287,7 @@ class AddPlant extends Component {
                         <div><button onClick={this.handleSubmit} id='add-plant-btn'>Add Plant </button></div>
 
                     </form>
+                    {this.state.plantAdded.length === 1 ? null : <p id='last-plant'><span id='just-added'>{this.state.plantAdded[lastPlant].nickname}</span> has been added to the family!  Don't forget to water them.</p>}
                 </center>
             </div>
         )
