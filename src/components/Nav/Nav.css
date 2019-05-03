@@ -11,7 +11,7 @@
 }
 
 .nav {
-  overflow: hidden;
+  /* overflow: hidden; */
   background-color: #818d8d;
 
   position: fixed;

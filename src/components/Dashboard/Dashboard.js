@@ -104,7 +104,7 @@ class Dashboard extends Component {
                             // Customize the path, i.e. the "completed progress"
                             path: {
                                 // Path color
-                                stroke: `rgb(137, 159, 179, ${this.percentageCalc() / 100})`,
+                                stroke: `rgb(126, 149, 172, ${this.percentageCalc() / 100})`,
                                 // Whether to use rounded or flat corners on the ends - can use 'butt' or 'round'
                                 strokeLinecap: 'butt',
                                 // Customize transition animation
@@ -118,7 +118,7 @@ class Dashboard extends Component {
                             // Customize the text
                             text: {
                                 // Text color
-                                fill: '#9db1b1',
+                                fill: '#818d8d',
                                 // Text size
                                 fontSize: '24px',
                                 fontWeight: '900',
