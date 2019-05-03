@@ -12,7 +12,7 @@
 
 .nav {
   overflow: hidden;
-  background-color: #9db1b1;
+  background-color: #818d8d;
 
   position: fixed;
   top: 0;
@@ -23,7 +23,7 @@
 .nav-link {
   float: left;
   color: #f2f2f2;
-  background-color: #9db1b1;
+  background-color: #818d8d;
   text-align: center;
   padding: 24px 10px;
   text-decoration: none;
