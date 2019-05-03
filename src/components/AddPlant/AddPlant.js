@@ -162,11 +162,14 @@ class AddPlant extends Component {
                             />
                         </div>
                         <ul>
-                            {this.state.result.map((plant, i) =>
+                            {this.state.result.filter(plant => plant.common_name != null).map((plant, i) =>
                             // conditionally render this to not include null values for common name
+                            
                                 <li key={i}>
                                     {plant.common_name}
                                 </li>
+                               
+                            
                             )}
                         </ul>
                         <div>

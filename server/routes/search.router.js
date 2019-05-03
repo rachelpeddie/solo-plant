@@ -12,7 +12,7 @@ router.get('/', (req, res) => {
     axios.get(`${url}?token=${key}&q=${search}`)
         .then(response => {
             res.send(response.data)
-            console.log(`woot!  got stuff for plant on serverside`, response);
+            console.log(`woot!  got stuff for plant on serverside`, response.data);
         }).catch(error => {
             console.log(`error getting plant stuff`, error);
             res.sendStatus(500);
