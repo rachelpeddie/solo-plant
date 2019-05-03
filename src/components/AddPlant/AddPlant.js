@@ -7,18 +7,27 @@ import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import MenuItem from '@material-ui/core/MenuItem';
+import Paper from '@material-ui/core/Paper';
+import Downshift from 'downshift';
 
 const moment = require('moment');
 
 const styles = theme => ({
     container: {
-        // display: 'flex',
-        // flexWrap: 'wrap',
+        position: 'relative',
     },
     textField: {
         marginLeft: theme.spacing.unit,
         marginRight: theme.spacing.unit,
         width: 200,
+    },
+    paper: {
+        position: 'absolute',
+        zIndex: 1,
+        marginTop: theme.spacing.unit,
+        left: 'auto',
+        right: 'auto',
+        // width: 200,
     },
     description: {
         marginLeft: theme.spacing.unit,
@@ -129,7 +138,7 @@ class AddPlant extends Component {
 
         return (
             <div>
-                {/* <pre>{JSON.stringify(this.state.plantAdded)}</pre>  */}
+                <pre>{JSON.stringify(this.state.plantAdded)}</pre> 
                 <center>
                     
                     <form className={classes.container} noValidate>
@@ -160,18 +169,26 @@ class AddPlant extends Component {
                                 required
                                 onChange={this.handleChangeFor('type')}
                             />
-                        </div>
-                        <ul>
+                            
+                        <Downshift id="downshift-simple">
+                        <Paper className={classes.paper} square>
                             {this.state.result.filter(plant => plant.common_name != null).map((plant, i) =>
                             // conditionally render this to not include null values for common name
                             
-                                <li key={i}>
+                                <MenuItem
+                                    value={plant.common_name}
+                                    onClick={this.handleChangeFor('type')}
+                                    key={i}
+                                >
                                     {plant.common_name}
-                                </li>
+                                </MenuItem>
                                
                             
                             )}
-                        </ul>
+                        </Paper>
+                                </ Downshift>
+                            
+                        </div>
                         <div>
                             <TextField
                                 id="standard-with-placeholder"
