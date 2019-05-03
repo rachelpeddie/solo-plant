@@ -133,10 +133,12 @@ class AddPlant extends Component {
                 <center>
                     
                     <form className={classes.container} noValidate>
+                    
                         <div>
                             <TextField
                                 id="standard-with-placeholder"
                                 label="Plant Search"
+                                value={this.state.newPlant.type}
                                 // ref={input => this.search = input}
                                 type="text"
                                 placeholder="Search for a plant..."
@@ -161,6 +163,7 @@ class AddPlant extends Component {
                         </div>
                         <ul>
                             {this.state.result.map((plant, i) =>
+                            // conditionally render this to not include null values for common name
                                 <li key={i}>
                                     {plant.common_name}
                                 </li>
@@ -172,6 +175,7 @@ class AddPlant extends Component {
                                 label="Plant Nickname"
                                 type="text"
                                 placeholder="Nickname"
+                                value={this.state.newPlant.nickname}
                                 className={classes.textField}
                                 InputLabelProps={{
                                     classes: {
@@ -197,6 +201,7 @@ class AddPlant extends Component {
                                 label="Image"
                                 type="url"
                                 placeholder="Image URL"
+                                value={this.state.newPlant.image}
                                 className={classes.textField}
                                 InputLabelProps={{
                                     classes: {
@@ -221,6 +226,7 @@ class AddPlant extends Component {
                                 id="standard-number"
                                 label="Water Frequency"
                                 type="number"
+                                value={this.state.newPlant.days}
                                 placeholder="Days Between Water"
                                 className={classes.textField}
                                 InputLabelProps={{
