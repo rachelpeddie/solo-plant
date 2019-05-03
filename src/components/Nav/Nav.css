@@ -13,6 +13,11 @@
 .nav {
   overflow: hidden;
   background-color: #9db1b1;
+
+  position: fixed;
+  top: 0;
+  width: 100%;
+
 }
 
 .nav-link {
