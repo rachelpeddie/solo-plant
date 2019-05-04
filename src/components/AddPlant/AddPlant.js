@@ -170,7 +170,7 @@ class AddPlant extends Component {
                                 onChange={this.handleChangeFor('type')}
                             />
                             
-                        <Downshift id="downshift-simple">
+                        {/* <Downshift id="downshift-simple"> */}
                         <Paper className={classes.paper} square>
                             {this.state.result.filter(plant => plant.common_name != null).map((plant, i) =>
                             // conditionally render this to not include null values for common name
@@ -186,7 +186,7 @@ class AddPlant extends Component {
                             
                             )}
                         </Paper>
-                                </ Downshift>
+                                {/* </ Downshift> */}
                             
                         </div>
                         <div>
