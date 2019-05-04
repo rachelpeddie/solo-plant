@@ -14,13 +14,11 @@ const styles = theme => ({
         flexGrow: 1,
     },
     mainGrid: {
-        padding: theme.spacing.unit * 2,
+        // padding: theme.spacing.unit * 2,
         textAlign: 'center',
-        color: theme.palette.text.secondary,
+        
     },
     textField: {
-        marginLeft: 124,
-        marginRight: theme.spacing.unit,
         width: 200,
     },
     cssLabel: {
@@ -74,12 +72,12 @@ class PlantInventory extends Component {
     render() {
         const { classes } = this.props;
         return (
-            <div className={classes.root}>
+            <div>
                 <h4 id='plantHeader'>PLANTS</h4>
                 {this.props.reduxState.plantListReducer === '' ? null : this.props.reduxState.plantListReducer.length === 0 ? <div> <h1>You need to add some plants to your family!</h1> <button className="add-plants-btn">Add Plants</button></div> :
                     <div>
                         <div>
-
+                            <center>
                             <TextField
                                 id="standard-select"
                                 select
@@ -87,11 +85,11 @@ class PlantInventory extends Component {
                                 className={classes.textField}
                                 value={this.state.sort_by}
                                 onChange={this.handleChangeFor('sort_by')}
-                                SelectProps={{
-                                    MenuProps: {
-                                        className: classes.menu,
-                                    },
-                                }}
+                                // SelectProps={{
+                                //     MenuProps: {
+                                //         className: classes.menu,
+                                //     },
+                                // }}
                                 InputLabelProps={{
                                     classes: {
                                         root: classes.cssLabel,
@@ -111,9 +109,13 @@ class PlantInventory extends Component {
                                     <MenuItem value={item} key={i}>{item.name}</MenuItem>
                                 )}
                             </TextField>
+                            </center>
                         </div>
+                        
                         <p id='plantCount'>plants in the fam: {this.props.reduxState.plantListReducer.length}</p>
-                        <Grid container spacing={24} className={classes.mainGrid} >
+                     <div className='center-div'>
+                        <div className={classes.mainGrid}>
+                                <Grid container justify="center">
                             {/* maps through projects reducer and displays each project on dom*/}
                             {this.state.sort_by === '' ? this.props.reduxState.plantListReducer.map(plant =>
 
@@ -123,6 +125,10 @@ class PlantInventory extends Component {
                                 <PlantItem plant={plant} key={plant.plant_id} />)}
                         </Grid>
                     </div>
+                    
+                    </div>
+                    </div>
+
                 }
             </div>
 

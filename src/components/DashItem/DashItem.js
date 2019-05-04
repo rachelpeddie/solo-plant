@@ -51,9 +51,9 @@ class DashItem extends Component {
         
         if(plant.status === false) {
             return(
-            <Grid item xs={4}>
+            <Grid item>
                 <div className='dashDiv'>
-                    <img src={plant.image} alt={plant.plant_type} className='smallImage' />
+                    <img src={plant.image} alt={plant.plant_type} className='galleryImage' />
                     <h2 className='plant-header'>{plant.nickname}</h2>
                         <p className='room'>{plant.plant_type} | {plant.room}</p>
                     {/* <h4 className = 'room'>{plant.room}</h4> */}

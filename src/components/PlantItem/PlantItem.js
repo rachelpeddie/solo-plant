@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { FaSun, FaTint, FaTintSlash } from 'react-icons/fa';
+import { FaSun, FaTint, FaTintSlash, FaTrash } from 'react-icons/fa';
 
 // material styles
 import Grid from '@material-ui/core/Grid';
@@ -53,7 +53,7 @@ class PlantItem extends Component {
 
     render(){
         return (
-            <Grid item xs={4}>
+            <Grid item>
                 <div className='dashDiv'>
                     <img src={this.props.plant.image} alt={this.props.plant.type} className='galleryImage' />
                     <h2 className='plant-header'>{this.props.plant.nickname}</h2>
@@ -63,9 +63,10 @@ class PlantItem extends Component {
                         <p className='plant-info'><FaTint className='blue-drop' /> {this.daysCalc(this.props.plant)} days</p> :
                         <p className='plant-info'><FaTintSlash className='blue-drop'/></p>
                     }
-                    <p className='plant-info'>{this.familyCalc(this.props.plant.date_added)} days in the fam</p>
+                    
                     <p className='plant-info'><FaSun className='yellow-sun'/><span className='light-spacing'>{this.props.plant.sunlight}</span></p>
-                    <button onClick={() => this.handleDelete(this.props.plant)} className='remove-button'>Remove</button>
+                    <p className='plant-info'>{this.familyCalc(this.props.plant.date_added)} days in the fam</p>
+                    <button onClick={() => this.handleDelete(this.props.plant)} className='remove-button'><FaTrash className='vertical-align'/> Remove</button>
                 </div>
             </Grid>
         )

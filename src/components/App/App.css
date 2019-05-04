@@ -4,6 +4,10 @@
     color: #3d4d4d;
 }
 
+.center-div {
+    width: 100%;
+}
+
 .login-header {
     text-align: center;
 }
@@ -32,8 +36,8 @@
 }
 
 .dash-header {
-    margin-left: 6%;
-    text-align: left;
+    /* margin-left: 124px; */
+    text-align: center;
 }
 
 .yellow-sun {
@@ -99,8 +103,8 @@ input {
 }
 
 .galleryImage {
-    height: 200px;
-    width: 200px;
+    height: 250px;
+    width: 250px;
     object-fit: cover;
     overflow: hidden;
 }
@@ -113,8 +117,8 @@ input {
 }
 
 .dashDiv {
-    min-width: 400px;
-    width: 200px;
+    width: 400px;
+    /* width: 200px; */
     padding-bottom: 20px;
 }
 
@@ -213,8 +217,8 @@ button {
 }
 
 #plantCount {
-    text-align: right;
-    padding-right: 6%;
+    text-align: center;
+    /* padding-right: 6%; */
 }
 #plantHeader {
     text-align: center;

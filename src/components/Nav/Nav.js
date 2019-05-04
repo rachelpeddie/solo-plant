@@ -5,12 +5,13 @@ import { connect } from 'react-redux';
 
 import Dropdown from '../Dropdown/Dropdown';
 import './Nav.css';
+import MobileDropdown from '../MobileDropdown/MobileDropdown';
 
 const Nav = (props) => (
   <div className="nav">
 
-       <Dropdown user={props.user.id}/>
-
+      <Dropdown user={props.user.id}/>
+      <MobileDropdown user={props.user.id} />
     
     <div className="nav-right">
       <Link className="nav-link" to="/addPlant">

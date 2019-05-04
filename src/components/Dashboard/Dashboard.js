@@ -17,7 +17,8 @@ const styles = theme => ({
         flexGrow: 1,
     },
     mainGrid: {
-        padding: theme.spacing.unit * 2,
+        // padding: theme.spacing.unit * 2,
+        display: 'inline-block',
         textAlign: 'center',
         marginTop: 60,
     },
@@ -131,10 +132,10 @@ class Dashboard extends Component {
                         }}
                          />}
             
-            <div className={classes.root}>
+            <div >
                 
                 <h1 className="dash-header">Water me!</h1>
-                <Grid container spacing={24} >
+                            <Grid container justify="center" >
                     {/* maps through projects reducer and displays each project on dom*/}
                     
                     {this.props.reduxState.plantListReducer.map( plant =>
