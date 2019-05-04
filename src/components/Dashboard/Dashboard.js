@@ -19,6 +19,7 @@ const styles = theme => ({
     mainGrid: {
         padding: theme.spacing.unit * 2,
         textAlign: 'center',
+        marginTop: 60,
     },
 });
 
@@ -133,7 +134,7 @@ class Dashboard extends Component {
             <div className={classes.root}>
                 
                 <h1 className="dash-header">Water me!</h1>
-                <Grid container spacing={24} className={classes.mainGrid} >
+                <Grid container spacing={24} >
                     {/* maps through projects reducer and displays each project on dom*/}
                     
                     {this.props.reduxState.plantListReducer.map( plant =>

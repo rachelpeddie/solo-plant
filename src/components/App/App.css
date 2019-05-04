@@ -12,14 +12,14 @@
     margin: 8px;
     margin-top: 20px;
     width: 160px;
-    background-color: #818d8d
+    background-color: #6f9999
 }
 
 #add-plant-btn {
     margin: 8px;
     margin-top: 16px;
     width: 160px;
-    background-color: #818d8d
+    background-color: #6f9999
 }
 
 #just-added {
@@ -34,6 +34,20 @@
 .dash-header {
     margin-left: 6%;
     text-align: left;
+}
+
+.yellow-sun {
+    color: #dfca57;
+    vertical-align: middle;
+}
+
+.blue-drop {
+    color: #79ade0;
+    vertical-align: middle;
+}
+
+.vertical-align {
+    vertical-align: middle;
 }
 /*
 .alert {
@@ -108,7 +122,7 @@ input {
 .dashButton {
     font-size: 14px;
     margin-top: 8px;
-    background-color: #818d8d;
+    background-color: #6f9999;
     color: #fff;
     width: 160px;
     height: 40px;
@@ -143,7 +157,7 @@ button {
     width: 120px;
     margin-top: 14px;
     color: #f2f2f2;
-    background-color: #818d8d;
+    background-color: #6f9999;
     text-transform: capitalize !important;
     font-size: 18px;
     font-weight: 600;
@@ -172,7 +186,7 @@ button {
 }
 
 .plant-info {
-    color: #818d8d;
+    color: #6f9999;
     margin: 0px;
 }
 
@@ -190,7 +204,7 @@ button {
 
 .footer {
     text-align: center;
-    color: #818d8d;
+    color: #6f9999;
     font-size: 8px;
 }
 

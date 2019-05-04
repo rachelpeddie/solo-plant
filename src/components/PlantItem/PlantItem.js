@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { FaSun } from 'react-icons/fa';
+import { FaSun, FaTint, FaTintSlash } from 'react-icons/fa';
 
 // material styles
 import Grid from '@material-ui/core/Grid';
@@ -59,12 +59,12 @@ class PlantItem extends Component {
                     <h2 className='plant-header'>{this.props.plant.nickname}</h2>
                     <h3 className='plant-subheader'>{this.props.plant.plant_type} | {this.props.plant.room}</h3>
                     {/* conditionally renders text based on plant watered status */}
-                    {this.props.plant.status === true ?
-                        <p className='plant-info'>Water me in {this.daysCalc(this.props.plant)} days</p> :
-                        <p className='plant-info'>Help me!  I need water!</p>
+                    {this.daysCalc(this.props.plant) === 1 ? <p className='plant-info'><FaTint className='blue-drop' /> {this.daysCalc(this.props.plant)} day </p> : this.props.plant.status === true ?
+                        <p className='plant-info'><FaTint className='blue-drop' /> {this.daysCalc(this.props.plant)} days</p> :
+                        <p className='plant-info'><FaTintSlash className='blue-drop'/></p>
                     }
                     <p className='plant-info'>{this.familyCalc(this.props.plant.date_added)} days in the fam</p>
-                    <p className='plant-info'><FaSun /><span className='light-spacing'>{this.props.plant.sunlight}</span></p>
+                    <p className='plant-info'><FaSun className='yellow-sun'/><span className='light-spacing'>{this.props.plant.sunlight}</span></p>
                     <button onClick={() => this.handleDelete(this.props.plant)} className='remove-button'>Remove</button>
                 </div>
             </Grid>
