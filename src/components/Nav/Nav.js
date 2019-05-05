@@ -14,7 +14,7 @@ const Nav = (props) => (
       <MobileDropdown user={props.user.id} />
     
     <div className="nav-right">
-      <Link className="nav-link" to="/addPlant">
+      {/* <Link className="nav-link" to="/addPlant">
         {props.user.id ? <div><FaPlus /> Add Plant </div> : null}
       </Link>
       <Link className="nav-link" to="/allPlants">
@@ -24,7 +24,7 @@ const Nav = (props) => (
       <Link className="nav-link" to="/home">
 
         {props.user.id ? <div><div><FaTint />Dashboard</div> </div> : null}
-      </Link>
+      </Link> */}
       
       <Link className="nav-link" to="/home">
         {/* Show this link if they are logged in or not,

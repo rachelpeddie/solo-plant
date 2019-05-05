@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { withRouter } from "react-router";
 
 import PropTypes from 'prop-types';
@@ -12,7 +13,7 @@ import Popper from '@material-ui/core/Popper';
 import MenuItem from '@material-ui/core/MenuItem';
 import MenuList from '@material-ui/core/MenuList';
 import { withStyles } from '@material-ui/core/styles';
-import { FaSeedling, FaEllipsisV } from 'react-icons/fa';
+import { FaPlus, FaBars, FaTint } from 'react-icons/fa';
 
 const styles = theme => ({
     root: {
@@ -29,29 +30,12 @@ class Dropdown extends React.Component {
         open: false,
     };
 
-    // logout = () => {
-    //     this.props.dispatch({ type: 'LOGOUT' });
-    //     this.props.history.push('/');
-    //     this.handleClose();
-    // }
-
     handleToggle = () => {
         this.setState(state => ({ open: !state.open }));
     };
 
-    handleClose = event =>  {
+    handleClose = event => {
         console.log(`event.target is`, event.target.getAttribute('name'));
-
-        if (event.target.getAttribute('name') === 'account') {
-            this.props.history.push('/accountInfo')
-        }
-        else if (event.target.getAttribute('name') === 'about') {
-            this.props.history.push('/about')
-        }
-        else if( event.target.getAttribute('name') === 'logout'){
-            this.props.dispatch({ type: 'LOGOUT' });
-            this.props.history.push('/');
-        }
         if (this.anchorEl.contains(event.target)) {
             return;
         }
@@ -66,41 +50,72 @@ class Dropdown extends React.Component {
         return (
             <div className={classes.root}>
 
-                    <IconButton
-                        buttonRef={node => {
-                            this.anchorEl = node;
-                        }}
-                        aria-owns={open ? 'menu-list-grow' : undefined}
-                        aria-haspopup="true"
+                <IconButton
+                    buttonRef={node => {
+                        this.anchorEl = node;
+                    }}
+                    aria-owns={open ? 'menu-list-grow' : undefined}
+                    aria-haspopup="true"
                     onClick={this.props.user && this.handleToggle}
                     id="dropdown-menu"
                     className='nav-right'>
                     <MoreVertIcon />
-          </IconButton>
+                </IconButton>
 
-                    <Popper open={open} anchorEl={this.anchorEl} transition disablePortal>
-                        {({ TransitionProps, placement }) => (
-                            <Grow
-                                {...TransitionProps}
-                                id="menu-list-grow"
-                                style={{ transformOrigin: placement === 'bottom' ? 'center top' : 'center bottom' }}
-                            >
-                                <Paper>
-                                    <ClickAwayListener onClickAway={this.handleClose}>
-                                        <MenuList>
-                                            <MenuItem name="about" onClick={this.handleClose}>About PlantIt</MenuItem>
-                                        <MenuItem name="account" onClick={this.handleClose}>Account Info</MenuItem>
-                                        <MenuItem name="logout"onClick={this.handleClose}>
-                                                Log Out
-
-                                        </MenuItem>
-                                        </MenuList>
-                                    </ClickAwayListener>
-                                </Paper>
-                            </Grow>
-                        )}
-                    </Popper>
-                </div>
+                <Popper open={open} anchorEl={this.anchorEl} transition disablePortal>
+                    {({ TransitionProps, placement }) => (
+                        <Grow
+                            {...TransitionProps}
+                            id="menu-list-grow"
+                            style={{ transformOrigin: placement === 'bottom' ? 'center top' : 'center bottom' }}
+                        >
+                            <Paper>
+                                <ClickAwayListener onClickAway={this.handleClose}>
+                                    <MenuList>
+                                        {/* Nav options if logged in */}
+                                        {this.props.user ?
+                                            <MenuItem onClick={this.handleClose}>
+                                                <Link className="nav-link" to="/addPlant">
+                                                    <div><FaPlus /> Add Plant </div>
+                                                </Link>
+                                            </MenuItem>
+                                        : null}
+                                        {this.props.user ?
+                                            <MenuItem onClick={this.handleClose}>
+                                                <Link className="nav-link" to="/allPlants">
+                                                    <div><FaBars /> Plant Inventory</div>
+                                                </Link>
+                                            </MenuItem>
+                                        : null}
+                                        {this.props.user ?
+                                            <MenuItem onClick={this.handleClose}>
+                                                <Link className="nav-link" to="/home">
+                                                    <div><div><FaTint />Dashboard</div> </div>
+                                                </Link>
+                                            </MenuItem>
+                                            : null}
+                                        {/* Nav options if not logged in */}
+                                        {this.props.user ? null :
+                                            <MenuItem onClick={this.handleClose}>
+                                                <Link className="nav-link" to="/home">
+                                                    Login / Register
+                                                </Link>
+                                            </MenuItem>
+                                        }
+                                        {this.props.user ? null :
+                                            <MenuItem onClick={this.handleClose}>
+                                                <Link className="nav-link" to="/about">
+                                                    About
+                                                </Link>
+                                            </MenuItem>
+                                        }
+                                    </MenuList>
+                                </ClickAwayListener>
+                            </Paper>
+                        </Grow>
+                    )}
+                </Popper>
+            </div>
         );
     }
 }

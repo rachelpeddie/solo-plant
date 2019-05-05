@@ -12,7 +12,7 @@ const moment = require('moment');
 
 const styles = theme => ({
     container: {
-        marginTop: 120,
+        marginTop: 60,
         // display: 'flex',
         // flexWrap: 'wrap',
     },
@@ -130,10 +130,11 @@ class AddPlant extends Component {
                     
                     <form className={classes.container} noValidate>
                         <button onClick={this.testData} id='test-button'></button>
+                        <h3>Enter Plant Info</h3>
                         <div>
                             <TextField
                                 id="standard-with-placeholder"
-                                label="Name of Plant"
+                                label="Type of Plant"
                                 type="text"
                                 value={this.state.newPlant.type}
                                 placeholder="Plant Type"

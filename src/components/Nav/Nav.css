@@ -17,13 +17,14 @@
   position: fixed;
   top: 0;
   width: 100%;
+  height: 70px;
 
 }
 
 .nav-link {
   float: left;
-  color: #f2f2f2;
-  background-color: #6f9999;
+  color: #6f9999;
+  /* background-color: #f2f2f2; */
   text-align: center;
   padding: 24px 10px;
   text-decoration: none;

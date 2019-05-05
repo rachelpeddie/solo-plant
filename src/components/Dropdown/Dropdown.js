@@ -93,7 +93,7 @@ class Dropdown extends React.Component {
                             <Paper className={classes.menu}>
                                     <ClickAwayListener onClickAway={this.handleClose}>
                                         <MenuList>
-                                            <MenuItem name="about" onClick={this.handleClose} >About PlantIt</MenuItem>
+                                        <MenuItem name="about" onClick={this.handleClose} >About PlantIt</MenuItem>
                                         <MenuItem name="account" onClick={this.handleClose}>Account Info</MenuItem>
                                         <MenuItem name="logout"onClick={this.handleClose}>
                                                 Log Out
