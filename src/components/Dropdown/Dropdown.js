@@ -20,6 +20,12 @@ const styles = theme => ({
     paper: {
         marginRight: theme.spacing.unit * 2,
     },
+    menu: {
+        // backgroundColor: '#425757',
+    },
+    menuItem: {
+        color: '#fff',
+    }
 
 });
 
@@ -84,10 +90,10 @@ class Dropdown extends React.Component {
                                 id="menu-list-grow"
                                 style={{ transformOrigin: placement === 'bottom' ? 'center top' : 'center bottom' }}
                             >
-                                <Paper>
+                            <Paper className={classes.menu}>
                                     <ClickAwayListener onClickAway={this.handleClose}>
                                         <MenuList>
-                                            <MenuItem name="about" onClick={this.handleClose}>About PlantIt</MenuItem>
+                                            <MenuItem name="about" onClick={this.handleClose} >About PlantIt</MenuItem>
                                         <MenuItem name="account" onClick={this.handleClose}>Account Info</MenuItem>
                                         <MenuItem name="logout"onClick={this.handleClose}>
                                                 Log Out

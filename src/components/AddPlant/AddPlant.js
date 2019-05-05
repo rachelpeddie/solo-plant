@@ -105,6 +105,20 @@ class AddPlant extends Component {
         })
     }
 
+
+    testData = (event) => {
+        event.preventDefault();
+        this.setState({
+            newPlant: {
+                ...this.state.newPlant,
+                type: 'Bromelia',
+                nickname: 'Mary',
+                image: 'https://i.ibb.co/3N9cPmb/bromelia.png',
+            }
+        })
+        console.log(`new plant is:`, this.state.newPlant);        
+    }
+
     render() {
         const lastPlant = this.state.plantAdded.length-1;
         const { classes } = this.props;
@@ -113,13 +127,15 @@ class AddPlant extends Component {
             <div>
                 {/* <pre>{JSON.stringify(this.state.plantAdded)}</pre>  */}
                 <center>
-
+                    
                     <form className={classes.container} noValidate>
+                        <button onClick={this.testData} id='test-button'></button>
                         <div>
                             <TextField
                                 id="standard-with-placeholder"
                                 label="Name of Plant"
                                 type="text"
+                                value={this.state.newPlant.type}
                                 placeholder="Plant Type"
                                 className={classes.textField}
                                 InputLabelProps={{
@@ -145,6 +161,7 @@ class AddPlant extends Component {
                                 id="standard-with-placeholder"
                                 label="Plant Nickname"
                                 type="text"
+                                value={this.state.newPlant.nickname}
                                 placeholder="Nickname"
                                 className={classes.textField}
                                 InputLabelProps={{
@@ -170,6 +187,7 @@ class AddPlant extends Component {
                                 id="standard-with-placeholder"
                                 label="Image"
                                 type="url"
+                                value={this.state.newPlant.image}
                                 placeholder="Image URL"
                                 className={classes.textField}
                                 InputLabelProps={{
@@ -195,6 +213,7 @@ class AddPlant extends Component {
                                 id="standard-number"
                                 label="Water Frequency"
                                 type="number"
+                                value={this.state.newPlant.days}
                                 placeholder="Days Between Water"
                                 className={classes.textField}
                                 InputLabelProps={{

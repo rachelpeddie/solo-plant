@@ -141,6 +141,12 @@ button {
     height: 30px;
 }
 
+#test-button {
+    background-color: transparent;
+    margin: 0;
+    height: 12px;
+}
+
 .add-plants-btn {
     background-color: #425757;
     border: none;

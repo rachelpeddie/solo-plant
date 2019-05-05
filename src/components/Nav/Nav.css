@@ -13,7 +13,7 @@
 .nav {
   /* overflow: hidden; */
   background-color: #6f9999;
-
+  z-index: 99999;
   position: fixed;
   top: 0;
   width: 100%;
