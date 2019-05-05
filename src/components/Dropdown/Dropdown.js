@@ -11,7 +11,7 @@ import Popper from '@material-ui/core/Popper';
 import MenuItem from '@material-ui/core/MenuItem';
 import MenuList from '@material-ui/core/MenuList';
 import { withStyles } from '@material-ui/core/styles';
-import { FaSeedling } from 'react-icons/fa';
+import { FaSeedling, FaUserCircle, FaSignOutAlt } from 'react-icons/fa';
 
 const styles = theme => ({
     root: {
@@ -24,7 +24,7 @@ const styles = theme => ({
         // backgroundColor: '#425757',
     },
     menuItem: {
-        color: '#fff',
+        color: '#6f9999;',
     }
 
 });
@@ -93,12 +93,14 @@ class Dropdown extends React.Component {
                             <Paper className={classes.menu}>
                                     <ClickAwayListener onClickAway={this.handleClose}>
                                         <MenuList>
-                                        <MenuItem name="about" onClick={this.handleClose} >About PlantIt</MenuItem>
-                                        <MenuItem name="account" onClick={this.handleClose}>Account Info</MenuItem>
-                                        <MenuItem name="logout"onClick={this.handleClose}>
-                                                Log Out
-
-                                        </MenuItem>
+                                            <MenuItem name="about" onClick={this.handleClose} className={classes.menuItem}>             <p><FaSeedling className='vertical-align' /> About PlantIt</p> 
+                                            </MenuItem>
+                                            <MenuItem name="account" onClick={this.handleClose} className={classes.menuItem}>
+                                                <p><FaUserCircle className='vertical-align' /> Account Info</p>
+                                            </MenuItem>
+                                            <MenuItem name="logout" onClick={this.handleClose} className={classes.menuItem}>
+                                                <p><FaSignOutAlt className='vertical-align' /> Log Out </p>
+                                            </MenuItem>
                                         </MenuList>
                                     </ClickAwayListener>
                                 </Paper>

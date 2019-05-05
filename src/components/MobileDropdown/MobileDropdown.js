@@ -90,7 +90,7 @@ class Dropdown extends React.Component {
                                         {this.props.user ?
                                             <MenuItem onClick={this.handleClose}>
                                                 <Link className="nav-link" to="/home">
-                                                    <div><div><FaTint />Dashboard</div> </div>
+                                                    <div><FaTint />Dashboard</div>
                                                 </Link>
                                             </MenuItem>
                                             : null}
