@@ -44,16 +44,16 @@ class Dropdown extends React.Component {
         this.setState(state => ({ open: !state.open }));
     };
 
-    handleClose = event =>  {
-        console.log(`event.target is`, event.target.getAttribute('name'));
+    handleClose = name => event =>  {
+        console.log(`event.target is`, name);
 
-        if (event.target.getAttribute('name') === 'account') {
+        if (name === 'account') {
             this.props.history.push('/accountInfo')
         }
-        else if (event.target.getAttribute('name') === 'about') {
+        else if (name === 'about') {
             this.props.history.push('/about')
         }
-        else if( event.target.getAttribute('name') === 'logout'){
+        else if( name === 'logout'){
             this.props.dispatch({ type: 'LOGOUT' });
             this.props.history.push('/');
         }
@@ -93,12 +93,12 @@ class Dropdown extends React.Component {
                             <Paper className={classes.menu}>
                                     <ClickAwayListener onClickAway={this.handleClose}>
                                         <MenuList>
-                                            <MenuItem name="about" onClick={this.handleClose} className={classes.menuItem}>             <p><FaSeedling className='vertical-align' /> About PlantIt</p> 
+                                            <MenuItem name="about" onClick={this.handleClose('about')} className={classes.menuItem}>             <p><FaSeedling className='vertical-align' /> About PlantIt</p> 
                                             </MenuItem>
-                                            <MenuItem name="account" onClick={this.handleClose} className={classes.menuItem}>
+                                            <MenuItem name="account" onClick={this.handleClose('account')} className={classes.menuItem}>
                                                 <p><FaUserCircle className='vertical-align' /> Account Info</p>
                                             </MenuItem>
-                                            <MenuItem name="logout" onClick={this.handleClose} className={classes.menuItem}>
+                                            <MenuItem name="logout" onClick={this.handleClose('logout')} className={classes.menuItem}>
                                                 <p><FaSignOutAlt className='vertical-align' /> Log Out </p>
                                             </MenuItem>
                                         </MenuList>
